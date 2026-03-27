@@ -42,9 +42,9 @@ export default function Header() {
 
         <nav className={`header-nav ${isMenuOpen ? 'nav-open' : ''}`}>
           {navItems.map((item) => (
-            <Link 
-              key={item.href} 
-              href={item.href} 
+            <Link
+              key={item.href}
+              href={item.href}
               className="header-nav-link"
               onClick={() => setIsMenuOpen(false)}
             >
@@ -56,8 +56,8 @@ export default function Header() {
         <div className="header-actions">
           <div className="header-locale-switcher">
             <Globe size={18} />
-            <select 
-              value={locale} 
+            <select
+              value={locale}
               onChange={(e) => switchLocale(e.target.value)}
               className="header-select"
             >
@@ -67,7 +67,7 @@ export default function Header() {
             </select>
           </div>
 
-          <button 
+          <button
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
             className="header-theme-toggle"
             aria-label="Toggle theme"
@@ -75,11 +75,11 @@ export default function Header() {
             {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
           </button>
 
-          <button className="header-cta-button">
+          <Link href="/#feedback" className="header-cta-button">
             {t('contact')}
-          </button>
+          </Link>
 
-          <button 
+          <button
             className="header-mobile-toggle"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >

@@ -11,7 +11,7 @@ export default function Feedback() {
     <section id="feedback" className="feedback-section">
       <div className="container">
         <div className="feedback-grid">
-          <motion.div 
+          <motion.div
             className="feedback-info"
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -19,7 +19,7 @@ export default function Feedback() {
           >
             <h2 className="title">{t('title')}</h2>
             <p className="subtitle">{t('description')}</p>
-            
+
             <div className="feedback-details">
               <div className="detail-item">
                 <strong>{t('address_label')}:</strong>
@@ -32,7 +32,7 @@ export default function Feedback() {
             </div>
           </motion.div>
 
-          <motion.form 
+          <motion.form
             className="feedback-form"
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
