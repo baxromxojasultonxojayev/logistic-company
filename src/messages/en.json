@@ -43,6 +43,10 @@
       "description": "BSM Consulting has had its place in the international logistics market since 2016. We help our clients deliver cargo safely and quickly from China and all over the world.",
       "warehouse_label": "Warehouse:"
     },
+    "locations": {
+      "title": "Our Locations",
+      "description": "Our logistics network and partners across the globe."
+    },
     "feedback": {
       "title": "Contact Us",
       "description": "Contact our specialists and get a free consultation.",

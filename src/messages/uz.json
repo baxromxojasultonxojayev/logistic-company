@@ -43,6 +43,10 @@
       "description": "BSM Consulting 2016-yildan buyon xalqaro logistika bozorida o'z o'rniga ega. Biz mijozlarimizga Xitoydan va butun dunyodan yuklarni xavfsiz va tezkor yetkazib berishda ko'maklashamiz.",
       "warehouse_label": "Ombor:"
     },
+    "locations": {
+      "title": "Bizning Manzillar",
+      "description": "Dunyo bo'ylab bizning logistika tarmoqlarimiz va hamkorlarimiz."
+    },
     "feedback": {
       "title": "Biz bilan bog'laning",
       "description": "Mutaxassislarimiz bilan bog'laning va bepul konsultatsiya oling.",

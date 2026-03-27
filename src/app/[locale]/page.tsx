@@ -7,6 +7,7 @@ import Services from '@/components/Services/Services';
 import About from '@/components/About/About';
 import Blog from '@/components/Blog/Blog';
 import Partners from '@/components/Partners/Partners';
+import Locations from '@/components/Locations/Locations';
 import Feedback from '@/components/Feedback/Feedback';
 import Footer from '@/components/Footer/Footer';
 import * as React from 'react';
@@ -25,6 +26,7 @@ export default function IndexPage({
         <Stats />
         <Services />
         <About />
+        <Locations />
         <Blog />
         <Partners />
         <Feedback />
