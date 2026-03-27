@@ -1,0 +1,70 @@
+{
+  "Index": {
+    "title": "BSM Consulting",
+    "hero": {
+      "title": "Reliable partner in the international logistics market",
+      "subtitle": "Leading company in international shipping and logistics since 2016."
+    },
+    "stats": {
+      "since": "since",
+      "experts": "specialists",
+      "clients": "clients"
+    },
+    "services": {
+      "title": "Our Services",
+      "description": "We offer a wide range of logistics services for the safe and rapid delivery of your cargo.",
+      "road": {
+        "title": "Road Freight",
+        "description": "Transportation of all types of cargo by road across Europe, CIS, and China."
+      },
+      "air": {
+        "title": "Air Freight",
+        "description": "Air delivery from anywhere in the world in the shortest possible time."
+      },
+      "sea": {
+        "title": "Sea Freight",
+        "description": "Cost-effective transportation of large volumes of cargo via oceans and seas."
+      },
+      "warehouse": {
+        "title": "Warehousing",
+        "description": "Storage and packaging of goods in our modern warehouses in China and Uzbekistan."
+      },
+      "insurance": {
+        "title": "Cargo Insurance",
+        "description": "Reliable insurance of your cargo against all types of risks."
+      },
+      "express": {
+        "title": "Express Delivery",
+        "description": "Fast door-to-door delivery of small and urgent shipments."
+      }
+    },
+    "about": {
+      "title": "About Us",
+      "description": "BSM Consulting has had its place in the international logistics market since 2016. We help our clients deliver cargo safely and quickly from China and all over the world.",
+      "warehouse_label": "Warehouse:"
+    },
+    "feedback": {
+      "title": "Contact Us",
+      "description": "Contact our specialists and get a free consultation.",
+      "address_label": "Address",
+      "address_value": "1,2 Sodiq Azimov St., Tashkent.",
+      "phone_label": "Phone",
+      "name": "Name",
+      "name_placeholder": "Enter your name",
+      "phone": "Phone number",
+      "message": "Message",
+      "message_placeholder": "Message text...",
+      "submit": "Send Application"
+    }
+  },
+  "Navigation": {
+    "home": "Home",
+    "services": "Services",
+    "blog": "Blog",
+    "about": "About Us",
+    "contact": "Contact",
+    "footer_desc": "Your reliable partner in international logistics and shipping.",
+    "menu_label": "Menu",
+    "social_label": "Social Media"
+  }
+}

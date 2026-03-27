@@ -1,0 +1,138 @@
+@use "sass:math";
+
+.header-site {
+  height: var(--header-height);
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: all 0.3s ease;
+
+  [data-theme='dark'] & {
+    background: rgba(15, 23, 42, 0.8);
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  .header-logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--secondary);
+    text-decoration: none;
+    letter-spacing: -0.5px;
+
+    span {
+      color: var(--accent);
+    }
+  }
+
+  .header-nav {
+    display: flex;
+    gap: 32px;
+
+    .header-nav-link {
+      font-weight: 500;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      transition: all 0.2s ease;
+      text-decoration: none;
+
+      &:hover {
+        color: var(--accent);
+      }
+    }
+
+    &.nav-open {
+      display: flex;
+      position: fixed;
+      top: var(--header-height);
+      left: 0;
+      width: 100%;
+      height: calc(100vh - var(--header-height));
+      background: var(--bg);
+      flex-direction: column;
+      padding: 40px;
+      gap: 20px;
+      z-index: 1000;
+    }
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .header-locale-switcher {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    cursor: pointer;
+
+    .header-select {
+      border: none;
+      background: transparent;
+      color: var(--text-main);
+      font-weight: 600;
+      cursor: pointer;
+      outline: none;
+      padding: 4px;
+    }
+  }
+
+  .header-theme-toggle {
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+
+    &:hover {
+      color: var(--accent);
+      transform: rotate(15deg);
+    }
+  }
+
+  .header-cta-button {
+    background: var(--brand-navy);
+    color: white;
+    padding: 10px 20px;
+    border-radius: var(--radius);
+    font-weight: 600;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: var(--brand-blue);
+      transform: translateY(-2px);
+    }
+  }
+
+  .header-mobile-toggle {
+    display: none;
+    color: var(--text-main);
+  }
+
+  @media (max-width: 768px) {
+    .header-nav:not(.nav-open) {
+      display: none;
+    }
+
+    .header-mobile-toggle {
+      display: block;
+    }
+
+    .header-cta-button {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "Index": {
+    "title": "BSM Consulting",
+    "hero": {
+      "title": "Xalqaro logistika bozorida ishonchli sherik",
+      "subtitle": "2016-yildan buyon xalqaro yuk tashish va logistika sohasida yetakchi kompaniya."
+    },
+    "stats": {
+      "since": "yildan buyon",
+      "experts": "mutaxassis",
+      "clients": "mijoz"
+    },
+    "services": {
+      "title": "Xizmatlarimiz",
+      "description": "Biz sizning yuklaringizni xavfsiz va tezkor yetkazib berish uchun keng ko'lamli logistika xizmatlarini taklif etamiz.",
+      "road": {
+        "title": "Avtomobil tashuvlari",
+        "description": "Yevropa, MDH va Xitoy bo'ylab barcha turdagi yuklarni avtomobillarda tashish."
+      },
+      "air": {
+        "title": "Avia yuk tashuvlari",
+        "description": "Dunyoning istalgan nuqtasidan eng qisqa muddatlarda havo orqali yetkazib berish."
+      },
+      "sea": {
+        "title": "Dengiz tashuvlari",
+        "description": "Yirik hajmdagi yuklarni okean va dengiz yo'llari orqali arzon narxlarda tashish."
+      },
+      "warehouse": {
+        "title": "Ombor xizmatlari",
+        "description": "Xitoy va O'zbekistondagi zamonaviy omborlarimizda yuklarni saqlash va qadoqlash."
+      },
+      "insurance": {
+        "title": "Yuklarni sug'urtalash",
+        "description": "Yuklaringizni barcha xavf-xatarlardan ishonchli sug'urta qilish."
+      },
+      "express": {
+        "title": "Ekspress yetkazib berish",
+        "description": "Kichik va shoshilinch yuklarni eshikdan eshikkacha tezkor yetkazish."
+      }
+    },
+    "about": {
+      "title": "Biz haqimizda",
+      "description": "BSM Consulting 2016-yildan buyon xalqaro logistika bozorida o'z o'rniga ega. Biz mijozlarimizga Xitoydan va butun dunyodan yuklarni xavfsiz va tezkor yetkazib berishda ko'maklashamiz.",
+      "warehouse_label": "Ombor:"
+    },
+    "feedback": {
+      "title": "Biz bilan bog'laning",
+      "description": "Mutaxassislarimiz bilan bog'laning va bepul konsultatsiya oling.",
+      "address_label": "Manzil",
+      "address_value": "Toshkent sh., Sodiq Azimov ko'chasi, 1,2-uy.",
+      "phone_label": "Telefon",
+      "name": "Ism",
+      "name_placeholder": "Ismingizni kiriting",
+      "phone": "Telefon raqami",
+      "message": "Xabar",
+      "message_placeholder": "Xabar matni...",
+      "submit": "Ariza qoldirish"
+    }
+  },
+  "Navigation": {
+    "home": "Bosh sahifa",
+    "services": "Xizmatlarimiz",
+    "blog": "Blogging",
+    "about": "Biz haqimizda",
+    "contact": "Aloqa",
+    "footer_desc": "Xalqaro logistika va yuk tashish bo'yicha ishonchli hamkoringiz.",
+    "menu_label": "Menyu",
+    "social_label": "Ijtimoiy tarmoqlar"
+  }
+}

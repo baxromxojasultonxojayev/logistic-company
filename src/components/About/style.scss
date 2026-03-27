@@ -1,0 +1,70 @@
+.about-section {
+  padding: 80px 0;
+  background: var(--bg);
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .about-content {
+    max-width: 800px;
+  }
+
+  .warehouse-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 60px;
+  }
+
+  .warehouse-card {
+    position: relative;
+    height: 350px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-8px);
+      border-color: var(--accent);
+
+      .placeholder-img {
+        transform: scale(1.1);
+      }
+    }
+
+    .placeholder-img {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--brand-navy) 0%, var(--brand-blue) 100%);
+      color: white;
+      font-weight: 700;
+      transition: transform 0.5s ease;
+    }
+
+    .image-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 30px;
+      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+      z-index: 2;
+      color: white;
+
+      h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+      }
+    }
+  }
+}

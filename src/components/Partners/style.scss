@@ -1,0 +1,42 @@
+.partners-section {
+  padding: 60px 0;
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+
+  [data-theme='dark'] & {
+    background: var(--bg-alt);
+  }
+
+  .partners-marquee {
+    position: relative;
+    width: 100%;
+  }
+
+  .partners-track {
+    display: flex;
+    width: max-content;
+    gap: 100px;
+  }
+
+  .partner-logo {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--text-muted);
+    opacity: 0.4;
+    transition: all 0.3s ease;
+    cursor: default;
+    display: flex;
+    align-items: center;
+    user-select: none;
+    letter-spacing: 2px;
+    white-space: nowrap;
+
+    &:hover {
+      opacity: 1;
+      color: var(--secondary);
+      transform: scale(1.05);
+    }
+  }
+}
