@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   overflow: hidden;
-  background-image: url("/images/hero-bg.png");
+  background-image: url("/images/bg-hero.png");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -30,8 +30,11 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: 
-      radial-gradient(circle, var(--border) 1px, transparent 1px);
+    background-image: radial-gradient(
+      circle,
+      var(--border) 1px,
+      transparent 1px
+    );
     background-size: 30px 30px;
     opacity: 0.3;
     z-index: 1;
@@ -49,8 +52,11 @@
 
   [data-theme="dark"] &::after {
     opacity: 0.1;
-    background-image: 
-      radial-gradient(circle, rgba(255,255,255,0.2) 1px, transparent 1px);
+    background-image: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.2) 1px,
+      transparent 1px
+    );
   }
 
   .hero-inner {

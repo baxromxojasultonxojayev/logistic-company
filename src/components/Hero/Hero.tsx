@@ -13,7 +13,7 @@ export default function Hero() {
   return (
     <section className="hero-section">
       <div className="container hero-inner">
-        <motion.div 
+        <motion.div
           className="hero-content"
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
@@ -28,14 +28,14 @@ export default function Hero() {
           </div>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           className="hero-image-wrapper"
           style={{ opacity }}
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.2 }}
         >
-          <div className="hero-image-container">
+          {/* <div className="hero-image-container">
             <Image 
               src="/images/hero.png" 
               alt="Logistics Collage" 
@@ -44,18 +44,18 @@ export default function Hero() {
               className="hero-image"
               sizes="(max-width: 768px) 100vw, 50vw"
             />
-          </div>
-          <motion.div 
+          </div> */}
+          {/* <motion.div
             className="hero-floating-card"
           >
             <h3>2016</h3>
             <p>{t('stats.since')}</p>
-          </motion.div>
+          </motion.div> */}
         </motion.div>
       </div>
-      
+
       <div className="hero-scroll-indicator">
-        <motion.div 
+        <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 1.5, repeat: Infinity }}
           className="hero-dot"
