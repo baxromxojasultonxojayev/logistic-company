@@ -35,13 +35,13 @@ function ServiceRow({ title, description, image, index }: ServiceRowProps) {
   const contentX = useSpring(rawContentX, springOptions);
 
   return (
-    <motion.div 
+    <motion.div
       ref={rowRef}
       style={{ scale, opacity }}
       className="service-row"
     >
       <div className="service-image-container">
-        <motion.div 
+        <motion.div
           style={{ y: imageY }}
           className="image-wrapper"
         >
@@ -50,7 +50,7 @@ function ServiceRow({ title, description, image, index }: ServiceRowProps) {
         </motion.div>
       </div>
 
-      <motion.div 
+      <motion.div
         style={{ x: contentX }}
         className="service-content"
       >
@@ -105,7 +105,7 @@ export default function Services() {
     <section id="services" className="services-section">
       <div className="container">
         <header className="services-header">
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -113,7 +113,7 @@ export default function Services() {
           >
             {t('services_title')}
           </motion.h2>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}

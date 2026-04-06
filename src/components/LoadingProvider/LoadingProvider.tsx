@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { createContext, useContext, useState, useEffect, ReactNode, Suspense } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
 
 interface LoadingContextType {
@@ -10,8 +10,8 @@ interface LoadingContextType {
 
 const LoadingContext = createContext<LoadingContextType | undefined>(undefined);
 
-export function LoadingProvider({ children }: { children: ReactNode }) {
-  const [isLoading, setIsLoading] = useState(false);
+// Separate component for searchParams logic to allow Suspense wrapping
+function LoadingParamsHandler({ isLoading, setIsLoading }: { isLoading: boolean; setIsLoading: (loading: boolean) => void }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
@@ -20,9 +20,13 @@ export function LoadingProvider({ children }: { children: ReactNode }) {
       setTimeout(() => setIsLoading(false), 0);
     }
     document.body.classList.remove('loading-cursor');
-  }, [pathname, searchParams, isLoading]);
+  }, [pathname, searchParams, isLoading, setIsLoading]);
 
+  return null;
+}
 
+export function LoadingProvider({ children }: { children: ReactNode }) {
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const handleAnchorClick = (e: MouseEvent) => {
@@ -31,7 +35,7 @@ export function LoadingProvider({ children }: { children: ReactNode }) {
 
       if (anchor && anchor.href && !anchor.target && !e.metaKey && !e.ctrlKey) {
         const url = new URL(anchor.href);
-        if (url.origin === window.location.origin) {
+        if (url.origin === window.origin) {
           setIsLoading(true);
           document.body.classList.add('loading-cursor');
         }
@@ -52,10 +56,14 @@ export function LoadingProvider({ children }: { children: ReactNode }) {
 
   return (
     <LoadingContext.Provider value={{ isLoading, setIsLoading }}>
+      <Suspense fallback={null}>
+        <LoadingParamsHandler isLoading={isLoading} setIsLoading={setIsLoading} />
+      </Suspense>
       {children}
     </LoadingContext.Provider>
   );
 }
+
 
 export const useLoading = () => {
   const context = useContext(LoadingContext);

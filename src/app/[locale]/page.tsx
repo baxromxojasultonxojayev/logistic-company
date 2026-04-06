@@ -1,5 +1,3 @@
-'use client';
-
 import Header from '@/components/Header/Header';
 import Hero from '@/components/Hero/Hero';
 import Stats from '@/components/Stats/Stats';
@@ -10,14 +8,29 @@ import Partners from '@/components/Partners/Partners';
 import Locations from '@/components/Locations/Locations';
 import Feedback from '@/components/Feedback/Feedback';
 import Footer from '@/components/Footer/Footer';
-import * as React from 'react';
+import { setRequestLocale } from 'next-intl/server';
 
-export default function IndexPage({
+
+export function generateStaticParams() {
+  return [
+    { locale: 'en' },
+    { locale: 'uz' },
+    { locale: 'ru' }
+  ];
+}
+
+export const dynamicParams = false;
+
+export default async function IndexPage({
   params
 }: {
   params: Promise<{ locale: string }>;
 }) {
-  React.use(params);
+  const { locale } = await params;
+  
+  // Enable static rendering
+  setRequestLocale(locale);
+
   return (
     <>
       <Header />

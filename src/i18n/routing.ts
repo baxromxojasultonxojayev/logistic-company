@@ -8,10 +8,11 @@ export const routing = defineRouting({
   // Used when no locale matches
   defaultLocale: 'uz',
   
-  // The default locale does not have a prefix (e.g. /), 
-  // while other locales have (e.g. /en).
-  localePrefix: 'as-needed'
+  // Every locale needs a prefix (e.g. /uz, /en), which is
+  // highly recommended for Static Export reliability.
+  localePrefix: 'always'
 });
+
 
 // Lightweight wrappers around Next.js navigation APIs
 // that will consider the routing configuration
