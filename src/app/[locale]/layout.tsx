@@ -1,7 +1,9 @@
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { ThemeProvider } from '@/components/ThemeProvider/ThemeProvider';
+import { LoadingProvider } from '@/components/LoadingProvider/LoadingProvider';
 import '@/styles/globals.css';
+
 
 export default async function LocaleLayout({
   children,
@@ -23,9 +25,12 @@ export default async function LocaleLayout({
             enableSystem
             disableTransitionOnChange
           >
-            {children}
+            <LoadingProvider>
+              {children}
+            </LoadingProvider>
           </ThemeProvider>
         </NextIntlClientProvider>
+
       </body>
     </html>
   );

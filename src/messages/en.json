@@ -1,74 +1,59 @@
 {
-  "Index": {
-    "title": "BSM Consulting",
-    "hero": {
-      "title": "Reliable partner in the international logistics market",
-      "subtitle": "Leading company in international shipping and logistics since 2016."
-    },
-    "stats": {
-      "since": "since",
-      "experts": "specialists",
-      "clients": "clients"
-    },
-    "services": {
-      "title": "Our Services",
-      "description": "We offer a wide range of logistics services for the safe and rapid delivery of your cargo.",
-      "road": {
-        "title": "Road Freight",
-        "description": "Transportation of all types of cargo by road across Europe, CIS, and China."
-      },
-      "air": {
-        "title": "Air Freight",
-        "description": "Air delivery from anywhere in the world in the shortest possible time."
-      },
-      "sea": {
-        "title": "Sea Freight",
-        "description": "Cost-effective transportation of large volumes of cargo via oceans and seas."
-      },
-      "warehouse": {
-        "title": "Warehousing",
-        "description": "Storage and packaging of goods in our modern warehouses in China and Uzbekistan."
-      },
-      "insurance": {
-        "title": "Cargo Insurance",
-        "description": "Reliable insurance of your cargo against all types of risks."
-      },
-      "express": {
-        "title": "Express Delivery",
-        "description": "Fast door-to-door delivery of small and urgent shipments."
-      }
-    },
-    "about": {
-      "title": "About Us",
-      "description": "BSM Consulting has had its place in the international logistics market since 2016. We help our clients deliver cargo safely and quickly from China and all over the world.",
-      "warehouse_label": "Warehouse:"
-    },
-    "locations": {
-      "title": "Our Locations",
-      "description": "Our logistics network and partners across the globe."
-    },
-    "feedback": {
-      "title": "Contact Us",
-      "description": "Contact our specialists and get a free consultation.",
-      "address_label": "Address",
-      "address_value": "1,2 Sodiq Azimov St., Tashkent.",
-      "phone_label": "Phone",
-      "name": "Name",
-      "name_placeholder": "Enter your name",
-      "phone": "Phone number",
-      "message": "Message",
-      "message_placeholder": "Message text...",
-      "submit": "Send Application"
-    }
-  },
-  "Navigation": {
-    "home": "Home",
-    "services": "Services",
-    "blog": "Blog",
-    "about": "About Us",
-    "contact": "Contact",
-    "footer_desc": "Your reliable partner in international logistics and shipping.",
-    "menu_label": "Menu",
-    "social_label": "Social Media"
-  }
+  "title": "BSM Consulting",
+  "hero_title": "Reliable partner in the international logistics market",
+  "hero_subtitle": "Leading company in international shipping and logistics since 2016.",
+  "stats_since": "since",
+  "stats_experts": "specialists",
+  "stats_clients": "clients",
+  "services_title": "Our Services",
+  "services_description": "We offer a wide range of logistics services for the safe and rapid delivery of your cargo.",
+  "service_road_title": "Road Freight",
+  "service_road_desc": "Transportation of all types of cargo by road across Europe, CIS, and China.",
+  "service_air_title": "Air Freight",
+  "service_air_desc": "Air delivery from anywhere in the world in the shortest possible time.",
+  "service_sea_title": "Sea Freight",
+  "service_sea_desc": "Cost-effective transportation of large volumes of cargo via oceans and seas.",
+  "service_warehouse_title": "Warehousing",
+  "service_warehouse_desc": "Storage and packaging of goods in our modern warehouses in China and Uzbekistan.",
+  "service_insurance_title": "Cargo Insurance",
+  "service_insurance_desc": "Reliable insurance of your cargo against all types of risks.",
+  "service_express_title": "Express Delivery",
+  "service_express_desc": "Fast door-to-door delivery of small and urgent shipments.",
+  "about_title": "About Us",
+  "about_description": "BSM Consulting has had its place in the international logistics market since 2016. We help our clients deliver cargo safely and quickly from China and all over the world.",
+  "about_warehouse_label": "Warehouse:",
+  "locations_title": "Our Locations",
+  "locations_description": "Our logistics network and partners across the globe.",
+  "feedback_title": "Contact Us",
+  "feedback_description": "Contact our specialists and get a free consultation.",
+  "feedback_address_label": "Address",
+  "feedback_address_value": "1,2 Sodiq Azimov St., Tashkent.",
+  "phone_label": "Phone",
+  "feedback_name": "Name",
+  "feedback_name_placeholder": "Enter your name",
+  "feedback_phone": "Phone number",
+  "feedback_message": "Message",
+  "feedback_message_placeholder": "Message text...",
+  "feedback_submit": "Send Application",
+
+
+  "nav_home": "Home",
+  "nav_services": "Services",
+  "nav_blog": "Blog",
+  "nav_about": "About Us",
+  "nav_contact": "Contact",
+  "nav_more": "More",
+  "nav_footer_desc": "Your reliable partner in international logistics and shipping.",
+
+  "nav_menu_label": "Menu",
+  "nav_social_label": "Social Media",
+  "blog_back": "Back",
+  "blog_error_fetch": "Error fetching news",
+  "blog_error_title": "An error occurred",
+  "blog_not_found": "Article not found",
+  "blog_return_home": "Return to Home",
+  "blog_no_content": "Article text is not available.",
+  "blog_default_category": "Logistics",
+  "blog_placeholder": "Logistics News",
+  "blog_no_posts": "There are no articles in this section yet."
 }

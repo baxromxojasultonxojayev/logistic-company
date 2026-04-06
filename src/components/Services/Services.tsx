@@ -1,115 +1,137 @@
 'use client';
 
-import { motion, useScroll, useTransform, useSpring, MotionValue } from 'framer-motion';
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { useTranslations } from 'next-intl';
-import { Truck, Plane, Ship, Package, Shield, Clock, ChevronRight } from 'lucide-react';
-import { useRef, useEffect, useState } from 'react';
+import { ChevronRight } from 'lucide-react';
+import { useRef } from 'react';
 import './style.scss';
 
-interface ServiceCardProps {
-  icon: React.ReactNode;
+interface ServiceRowProps {
   title: string;
   description: string;
+  image: string;
   index: number;
-  scrollYProgress: MotionValue<number>;
 }
 
-function ServiceCard({ icon, title, description, index, scrollYProgress }: ServiceCardProps) {
-  const [isMobile, setIsMobile] = useState(false);
+function ServiceRow({ title, description, image, index }: ServiceRowProps) {
+  const rowRef = useRef<HTMLDivElement>(null);
+  const isEven = index % 2 === 0;
 
-  useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
+  const { scrollYProgress } = useScroll({
+    target: rowRef,
+    offset: ["start end", "end start"]
+  });
 
-  // Progress window for the "spreading" effect (0 to 0.4 of section scroll)
-  const spreadStart = 0;
-  const spreadEnd = 0.45;
+  // Balanced focus: Peeks at center, remains at 100% on top.
+  const rawScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.95, 1, 1]);
+  const rawOpacity = useTransform(scrollYProgress, [0, 0.4, 1], [0.4, 1, 1]);
+  const rawImageY = useTransform(scrollYProgress, [0, 1], [-30, 30]);
+  const rawContentX = useTransform(scrollYProgress, [0, 0.5, 1], [isEven ? -100 : 100, 0, 0]);
 
-  // Horizontal offset: cards on left move left, cards on right move right
-  // On mobile, we only use vertical offsets
-  const xMultiplier = isMobile ? 0 : (index % 3 === 0 ? -120 : index % 3 === 2 ? 120 : 0);
-  const yMultiplier = isMobile ? (index * 40 - 100) : (index < 3 ? -100 : 100);
-  
-  // Stacking rotation
-  const rotateOffset = isMobile ? (index - 2.5) * 2 : (index - 2.5) * 8;
-  const zOffset = (5 - index) * 20; // Bring stack forward
-
-  const x = useTransform(scrollYProgress, [spreadStart, spreadEnd], [xMultiplier, 0]);
-  const y = useTransform(scrollYProgress, [spreadStart, spreadEnd], [yMultiplier, 0]);
-  const z = useTransform(scrollYProgress, [spreadStart, spreadEnd], [zOffset, 0]);
-  const rotate = useTransform(scrollYProgress, [spreadStart, spreadEnd], [rotateOffset, 0]);
-  const scale = useTransform(scrollYProgress, [spreadStart, spreadEnd], [0.85, 1]);
-  const opacity = useTransform(scrollYProgress, [spreadStart, spreadEnd], [0, 1]);
-
-  const springConfig = { stiffness: 80, damping: 15, mass: 0.8 };
-  const springX = useSpring(x, springConfig);
-  const springY = useSpring(y, springConfig);
-  const springZ = useSpring(z, springConfig);
-  const springRotate = useSpring(rotate, springConfig);
-  const springScale = useSpring(scale, springConfig);
-  const springOpacity = useSpring(opacity, springConfig);
+  const springOptions = { stiffness: 100, damping: 20, mass: 1 };
+  const scale = useSpring(rawScale, springOptions);
+  const opacity = useSpring(rawOpacity, springOptions);
+  const imageY = useSpring(rawImageY, springOptions);
+  const contentX = useSpring(rawContentX, springOptions);
 
   return (
-    <motion.div
-      style={{ 
-        x: springX, 
-        y: springY, 
-        z: springZ,
-        rotate: springRotate, 
-        scale: springScale, 
-        opacity: springOpacity 
-      }}
-      className="service-card"
+    <motion.div 
+      ref={rowRef}
+      style={{ scale, opacity }}
+      className="service-row"
     >
-      <div className="service-icon-wrapper">
-        {icon}
+      <div className="service-image-container">
+        <motion.div 
+          style={{ y: imageY }}
+          className="image-wrapper"
+        >
+          <img src={image} alt={title} />
+          <div className="image-overlay" />
+        </motion.div>
       </div>
-      <h3>{title}</h3>
-      <p>{description}</p>
-      <div className="service-more-btn">
-        Read More <ChevronRight size={18} />
-      </div>
+
+      <motion.div 
+        style={{ x: contentX }}
+        className="service-content"
+      >
+        <div className="service-index">0{index + 1}</div>
+        <h3 className="service-title">{title}</h3>
+        <p className="service-desc">{description}</p>
+        <button className="service-btn">
+          Explore Solution <ChevronRight size={20} />
+        </button>
+      </motion.div>
     </motion.div>
   );
 }
 
 export default function Services() {
-  const t = useTranslations('Index.services');
-  const sectionRef = useRef<HTMLElement>(null);
-  
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "center center"]
-  });
+  const t = useTranslations();
 
   const services = [
-    { icon: <Truck size={32} />, title: t('road.title'), description: t('road.description') },
-    { icon: <Plane size={32} />, title: t('air.title'), description: t('air.description') },
-    { icon: <Ship size={32} />, title: t('sea.title'), description: t('sea.description') },
-    { icon: <Package size={32} />, title: t('warehouse.title'), description: t('warehouse.description') },
-    { icon: <Shield size={32} />, title: t('insurance.title'), description: t('insurance.description') },
-    { icon: <Clock size={32} />, title: t('express.title'), description: t('express.description') },
+    {
+      title: t('service_road_title'),
+      description: t('service_road_desc'),
+      image: 'https://images.unsplash.com/photo-1519003722824-194d4455a60c?q=80&w=1200&auto=format&fit=crop'
+    },
+    {
+      title: t('service_air_title'),
+      description: t('service_air_desc'),
+      image: 'https://images.unsplash.com/photo-1517976384346-3136801d605d?q=80&w=1200&auto=format&fit=crop'
+    },
+    {
+      title: t('service_sea_title'),
+      description: t('service_sea_desc'),
+      image: 'https://images.unsplash.com/photo-1494412519320-aa613dfb3738?q=80&w=1200&auto=format&fit=crop'
+    },
+    {
+      title: t('service_warehouse_title'),
+      description: t('service_warehouse_desc'),
+      image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1200&auto=format&fit=crop'
+    },
+    {
+      title: t('service_insurance_title'),
+      description: t('service_insurance_desc'),
+      image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=1200&auto=format&fit=crop'
+    },
+    {
+      title: t('service_express_title'),
+      description: t('service_express_desc'),
+      image: 'https://images.unsplash.com/photo-1566576721346-d4a3b4eaad5b?q=80&w=1200&auto=format&fit=crop'
+    },
   ];
 
   return (
-    <section id="services" className="services-section" ref={sectionRef}>
+    <section id="services" className="services-section">
       <div className="container">
-        <div className="services-title">
-          <h2 className="title">{t('title')}</h2>
-          <p className="subtitle">{t('description')}</p>
-        </div>
-        <div className="services-grid">
+        <header className="services-header">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="title"
+          >
+            {t('services_title')}
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="subtitle"
+          >
+            {t('services_description')}
+          </motion.p>
+        </header>
+
+        <div className="services-list">
           {services.map((service, index) => (
-            <ServiceCard
+            <ServiceRow
               key={index}
               index={index}
-              icon={service.icon}
               title={service.title}
               description={service.description}
-              scrollYProgress={scrollYProgress}
+              image={service.image}
             />
           ))}
         </div>

@@ -3,16 +3,18 @@
 import { useTranslations, useLocale } from 'next-intl';
 import { Link, useRouter, usePathname } from '@/navigation';
 import { useTheme } from 'next-themes';
+import { useLoading } from '@/components/LoadingProvider/LoadingProvider';
 import { Sun, Moon, Globe, Menu, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import './style.scss';
 
 export default function Header() {
-  const t = useTranslations('Navigation');
+  const t = useTranslations();
   const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
   const { theme, setTheme } = useTheme();
+  const { setIsLoading } = useLoading();
   const [mounted, setMounted] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -21,15 +23,18 @@ export default function Header() {
   }, []);
 
   const switchLocale = (newLocale: string) => {
+    setIsLoading(true);
     router.replace(pathname, { locale: newLocale });
   };
 
+
   const navItems = [
-    { name: t('home'), href: '/' },
-    { name: t('services'), href: '/#services' },
-    { name: t('blog'), href: '/#blog' },
-    { name: t('about'), href: '/#about' },
+    { name: t('nav_home'), href: '/' },
+    { name: t('nav_services'), href: '/#services' },
+    { name: t('nav_blog'), href: '/#blog' },
+    { name: t('nav_about'), href: '/#about' },
   ];
+
 
   if (!mounted) return null;
 
@@ -76,8 +81,9 @@ export default function Header() {
           </button>
 
           <Link href="/#feedback" className="header-cta-button">
-            {t('contact')}
+            {t('nav_contact')}
           </Link>
+
 
           <button
             className="header-mobile-toggle"

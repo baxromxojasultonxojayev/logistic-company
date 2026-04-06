@@ -30,13 +30,14 @@ function Counter({ value }: { value: string }) {
 }
 
 export default function Stats() {
-  const t = useTranslations('Index.stats');
+  const t = useTranslations();
 
   const stats = [
-    { value: '2016', label: t('since') },
-    { value: '50+', label: t('experts') },
-    { value: '500+', label: t('clients') },
+    { value: '2016', label: t('stats_since') },
+    { value: '50+', label: t('stats_experts') },
+    { value: '500+', label: t('stats_clients') },
   ];
+
 
   return (
     <section className="stats-section">

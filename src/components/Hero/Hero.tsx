@@ -2,11 +2,11 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useTranslations } from 'next-intl';
-import Image from 'next/image';
+
 import './style.scss';
 
 export default function Hero() {
-  const t = useTranslations('Index');
+  const t = useTranslations();
   const { scrollY } = useScroll();
   const opacity = useTransform(scrollY, [0, 300], [1, 0]);
 
@@ -20,13 +20,14 @@ export default function Hero() {
           transition={{ duration: 0.8, ease: 'easeOut' }}
           style={{ opacity }}
         >
-          <h1 className="hero-title">{t('hero.title')}</h1>
-          <p className="hero-subtitle">{t('hero.subtitle')}</p>
+          <h1 className="hero-title">{t('hero_title')}</h1>
+          <p className="hero-subtitle">{t('hero_subtitle')}</p>
           <div className="hero-cta-group">
-            <button className="btn-primary">{t('feedback.submit')}</button>
-            <button className="btn-secondary">{t('about.title')}</button>
+            <button className="btn-primary">{t('feedback_submit')}</button>
+            <button className="btn-secondary">{t('about_title')}</button>
           </div>
         </motion.div>
+
 
         <motion.div
           className="hero-image-wrapper"

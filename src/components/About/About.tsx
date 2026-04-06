@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl';
 import './style.scss';
 
 export default function About() {
-  const t = useTranslations('Index.about');
+  const t = useTranslations();
 
   const warehouses = [
     { city: 'Guanchjou', image: '/images/wh-gz.png' },
@@ -24,8 +24,8 @@ export default function About() {
             viewport={{ once: true }}
             className="about-content"
           >
-            <h2 className="title">{t('title')}</h2>
-            <p className="subtitle">{t('description')}</p>
+            <h2 className="title">{t('about_title')}</h2>
+            <p className="subtitle">{t('about_description')}</p>
           </motion.div>
         </div>
 
@@ -43,7 +43,7 @@ export default function About() {
                 <h3>{wh.city}</h3>
               </div>
               <div className="placeholder-img">
-                <span>{t('warehouse_label')} {wh.city}</span>
+                <span>{t('about_warehouse_label')} {wh.city}</span>
               </div>
             </motion.div>
           ))}
@@ -52,3 +52,4 @@ export default function About() {
     </section>
   );
 }
+
