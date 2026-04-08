@@ -5,7 +5,6 @@ git pull
 npm install
 rm -rf out
 npm run build
-scp -r out/* root@192.168.145.38:/var/www/agrokomakchi.uz/
+rsync -avz --delete out/ root@95.130.227.123:/var/www/bsm/frontend/out/
 
-ssh root@192.168.145.38 'sudo systemctl reload nginx'
 echo "Deployed successfully."
