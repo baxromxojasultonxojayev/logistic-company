@@ -414,7 +414,7 @@ sudo apt install -y certbot python3-certbot-nginx
 ### 10.3 Obtain SSL certificate
 
 ```bash
-sudo certbot --nginx -d yourdomain.com -d www.yourdomain.com
+sudo certbot --nginx -d bsm-group.uz -d www.bsm-group.uz
 ```
 
 Follow the prompts:
