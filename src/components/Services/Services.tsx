@@ -57,9 +57,9 @@ function ServiceRow({ title, description, image, index }: ServiceRowProps) {
         <div className="service-index">0{index + 1}</div>
         <h3 className="service-title">{title}</h3>
         <p className="service-desc">{description}</p>
-        <button className="service-btn">
+        {/* <button className="service-btn">
           Explore Solution <ChevronRight size={20} />
-        </button>
+        </button> */}
       </motion.div>
     </motion.div>
   );
@@ -72,34 +72,56 @@ export default function Services() {
     {
       title: t('service_road_title'),
       description: t('service_road_desc'),
-      image: 'https://images.unsplash.com/photo-1519003722824-194d4455a60c?q=80&w=1200&auto=format&fit=crop'
+      image: '/images/services/road-truck.jpg'
+    },
+    {
+      title: t('service_rail_title'),
+      description: t('service_rail_desc'),
+      image: '/images/services/rail-transport.jpg'
     },
     {
       title: t('service_air_title'),
       description: t('service_air_desc'),
-      image: 'https://images.unsplash.com/photo-1517976384346-3136801d605d?q=80&w=1200&auto=format&fit=crop'
+      image: '/images/services/air-freight.jpg'
+    },
+    // {
+    //   title: t('service_customs_title'),
+    //   description: t('service_customs_desc'),
+    //   image: '/images/services/customs-brokerage.jpg'
+    // },
+    {
+      title: t('service_consulting_title'),
+      description: t('service_consulting_desc'),
+      image: '/images/services/logistics-consulting.jpg'
     },
     {
       title: t('service_sea_title'),
       description: t('service_sea_desc'),
-      image: 'https://images.unsplash.com/photo-1494412519320-aa613dfb3738?q=80&w=1200&auto=format&fit=crop'
+      image: '/images/services/import-export.jpg'
     },
     {
       title: t('service_warehouse_title'),
       description: t('service_warehouse_desc'),
-      image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1200&auto=format&fit=crop'
-    },
-    {
-      title: t('service_insurance_title'),
-      description: t('service_insurance_desc'),
-      image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=1200&auto=format&fit=crop'
+      image: '/images/services/warehouse-storage.jpg'
     },
     {
       title: t('service_express_title'),
       description: t('service_express_desc'),
-      image: 'https://images.unsplash.com/photo-1566576721346-d4a3b4eaad5b?q=80&w=1200&auto=format&fit=crop'
+      image: '/images/services/domestic-logistics.jpg'
     },
+    {
+      title: t('service_china_title'),
+      description: t('service_china_desc'),
+      image: '/images/services/china-internal-logistics.jpg'
+    },
+    // {
+    //   title: t('service_insurance_title'),
+    //   description: t('service_insurance_desc'),
+    //   image: '/images/services/china-logistics-map.jpg'
+    // },
   ];
+
+
 
   return (
     <section id="services" className="services-section">
