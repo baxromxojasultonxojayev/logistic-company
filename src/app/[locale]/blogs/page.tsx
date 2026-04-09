@@ -30,19 +30,5 @@ export default async function BlogsPage({ params }: { params: Promise<{ locale: 
   // Enable static rendering
   setRequestLocale(locale);
 
-  let posts: BlogPost[] = [];
-  let error: string | null = null;
-
-  try {
-    interface PaginatedResponse {
-      results: BlogPost[];
-    }
-    const data = await api.get<PaginatedResponse>("/blog/posts/");
-    posts = data.results;
-  } catch (err) {
-    const errorMessage = err instanceof Error ? err.message : 'Error fetching blogs';
-    error = errorMessage;
-  }
-
-  return <BlogsClient posts={posts} error={error} />;
+  return <BlogsClient />;
 }
