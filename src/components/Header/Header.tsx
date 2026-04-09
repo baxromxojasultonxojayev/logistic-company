@@ -4,8 +4,9 @@ import { useTranslations, useLocale } from 'next-intl';
 import { Link, useRouter, usePathname } from '@/navigation';
 import { useTheme } from 'next-themes';
 import { useLoading } from '@/components/LoadingProvider/LoadingProvider';
-import { Sun, Moon, Globe, Menu, X } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ChevronDown, Check, Globe, Sun, Moon, Menu, X } from 'lucide-react';
 import './style.scss';
 
 export default function Header() {
@@ -17,6 +18,8 @@ export default function Header() {
   const { setIsLoading } = useLoading();
   const [mounted, setMounted] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLangOpen, setIsLangOpen] = useState(false);
+  const langRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     requestAnimationFrame(() => setMounted(true));
@@ -24,8 +27,19 @@ export default function Header() {
 
   const switchLocale = (newLocale: string) => {
     setIsLoading(true);
+    setIsLangOpen(false);
     router.replace(pathname, { locale: newLocale });
   };
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (langRef.current && !langRef.current.contains(event.target as Node)) {
+        setIsLangOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
 
   const navItems = [
@@ -59,17 +73,38 @@ export default function Header() {
         </nav>
 
         <div className="header-actions">
-          <div className="header-locale-switcher">
-            <Globe size={18} />
-            <select
-              value={locale}
-              onChange={(e) => switchLocale(e.target.value)}
-              className="header-select"
+          <div className="header-locale-switcher" ref={langRef}>
+            <button
+              className={`lang-toggle ${isLangOpen ? 'active' : ''}`}
+              onClick={() => setIsLangOpen(!isLangOpen)}
             >
-              <option value="uz">UZ</option>
-              <option value="ru">RU</option>
-              <option value="en">EN</option>
-            </select>
+              <Globe size={18} />
+              <span>{locale.toUpperCase()}</span>
+              <ChevronDown size={14} className={`chevron-icon ${isLangOpen ? 'rotate' : ''}`} />
+            </button>
+
+            <AnimatePresence>
+              {isLangOpen && (
+                <motion.div
+                  className="lang-dropdown"
+                  initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                  transition={{ duration: 0.2, ease: "easeOut" }}
+                >
+                  {['uz', 'ru', 'en'].map((lang) => (
+                    <button
+                      key={lang}
+                      className={`lang-option ${locale === lang ? 'active' : ''}`}
+                      onClick={() => switchLocale(lang)}
+                    >
+                      <span className="lang-text">{lang.toUpperCase()}</span>
+                      {locale === lang && <Check size={14} className="check-icon" />}
+                    </button>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
 
           <button

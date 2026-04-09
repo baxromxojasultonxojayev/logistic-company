@@ -12,7 +12,7 @@ export async function generateStaticParams() {
     interface PaginatedResponse {
       results: BlogPost[];
     }
-    const data = await api.get<PaginatedResponse>("/blog/posts/");
+    const data = await api.get<PaginatedResponse>("/blog/posts/", { locale: 'uz' }); // Using default locale for static paths list
     
     // Generate paths for ALL locales for EACH slug
     return locales.flatMap((locale) => 
@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   setRequestLocale(locale);
   
   try {
-    const post = await api.get<BlogPost>(`/blog/posts/${slug}/`);
+    const post = await api.get<BlogPost>(`/blog/posts/${slug}/`, { locale });
     return {
       title: post.title,
       description: post.excerpt || post.description

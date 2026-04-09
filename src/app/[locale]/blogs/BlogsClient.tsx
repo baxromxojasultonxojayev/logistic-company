@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "@/navigation";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import { api } from "@/lib/api";
@@ -65,6 +65,7 @@ const itemVariants = {
 
 export default function BlogsClient() {
   const t = useTranslations();
+  const locale = useLocale();
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -78,7 +79,7 @@ export default function BlogsClient() {
         setLoading(true);
         // Correctly handle offset based on page and PAGE_SIZE if the API supports it, 
         // or just use ?page=X if it's page-based.
-        const response = await api.get<PaginatedResponse>(`/blog/posts/?page=${page}&page_size=${PAGE_SIZE}`);
+        const response = await api.get<PaginatedResponse>(`/blog/posts/?page=${page}&page_size=${PAGE_SIZE}`, { locale });
         setPosts(response.results);
         setTotalCount(response.count);
         setError(null);

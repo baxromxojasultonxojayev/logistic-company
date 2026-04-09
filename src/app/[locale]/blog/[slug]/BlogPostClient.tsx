@@ -10,7 +10,7 @@ import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { useRouter } from "next/navigation";
 import { useEffect, useState, useRef } from "react";
 import { api } from "@/lib/api";
@@ -39,6 +39,7 @@ export interface BlogPost {
 
 export default function BlogPostClient({ slug }: { slug: string }) {
   const t = useTranslations();
+  const locale = useLocale();
   const router = useRouter();
   const [post, setPost] = useState<BlogPost | null>(null);
   const [loading, setLoading] = useState(true);
@@ -50,7 +51,7 @@ export default function BlogPostClient({ slug }: { slug: string }) {
     const fetchPost = async () => {
       try {
         setLoading(true);
-        const data = await api.get<BlogPost>(`/blog/posts/${slug}/`);
+        const data = await api.get<BlogPost>(`/blog/posts/${slug}/`, { locale });
         if (isMounted) {
           setPost(data);
           setError(null);

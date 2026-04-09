@@ -10,16 +10,24 @@ type RequestOptions<T = void> = {
   headers?: Record<string, string>;
   method?: string;
   body?: T;
+  locale?: string;
 };
 
 async function apiRequest<TResponse, TBody = void>(
   endpoint: string,
   options: RequestOptions<TBody> = {},
 ): Promise<TResponse> {
-  const { method = "GET", body, headers = {} } = options;
+  const { method = "GET", body, headers = {}, locale } = options;
 
   // Ensure endpoint starts with a slash
-  const cleanEndpoint = endpoint.startsWith("/") ? endpoint : `/${endpoint}`;
+  let cleanEndpoint = endpoint.startsWith("/") ? endpoint : `/${endpoint}`;
+
+  // Add lang query parameter if locale is provided
+  if (locale) {
+    const separator = cleanEndpoint.includes("?") ? "&" : "?";
+    cleanEndpoint = `${cleanEndpoint}${separator}lang=${locale}`;
+  }
+
   const url = `${BASE_URL}${cleanEndpoint}`;
 
   const fetchOptions: RequestInit = {
@@ -27,6 +35,7 @@ async function apiRequest<TResponse, TBody = void>(
     headers: {
       "Content-Type": "application/json",
       "x-api-key": process.env.NEXT_PUBLIC_API_KEY || "",
+      "Accept-Language": locale || "uz",
       ...headers,
     },
   };
