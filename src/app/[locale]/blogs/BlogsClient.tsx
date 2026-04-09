@@ -36,7 +36,7 @@ interface PaginatedResponse {
   previous: string | null;
 }
 
-const PAGE_SIZE = 9;
+const PAGE_SIZE = 10;
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -78,7 +78,7 @@ export default function BlogsClient() {
         setLoading(true);
         // Correctly handle offset based on page and PAGE_SIZE if the API supports it, 
         // or just use ?page=X if it's page-based.
-        const response = await api.get<PaginatedResponse>(`/blog/posts/?page=${page}&limit=${PAGE_SIZE}`);
+        const response = await api.get<PaginatedResponse>(`/blog/posts/?page=${page}&page_size=${PAGE_SIZE}`);
         setPosts(response.results);
         setTotalCount(response.count);
         setError(null);
@@ -92,10 +92,10 @@ export default function BlogsClient() {
     };
 
     fetchBlogs();
-    
+
     // Scroll to top when page changes
     if (hasInitialFetched.current) {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   }, [page, t]);
 
@@ -185,7 +185,7 @@ export default function BlogsClient() {
                     >
                       <ChevronLeft size={20} />
                     </button>
-                    
+
                     <div className="page-numbers">
                       {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNum) => (
                         <button
@@ -209,7 +209,7 @@ export default function BlogsClient() {
                 )}
               </>
             )}
-            
+
             {!loading && posts.length === 0 && !error && (
               <div className="no-blogs">
                 <p>{t('blog_no_posts')}</p>
