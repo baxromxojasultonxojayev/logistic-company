@@ -45,8 +45,6 @@
   "feedback_message": "Сообщение",
   "feedback_message_placeholder": "Текст сообщения...",
   "feedback_submit": "Оставить заявку",
-
-
   "nav_home": "Главная",
   "nav_services": "Услуги",
   "nav_blog": "Блог",
@@ -54,7 +52,6 @@
   "nav_contact": "Контакты",
   "nav_more": "Ещё",
   "nav_footer_desc": "Ваш надежный партнер в международной логистике и грузоперевозках.",
-
   "nav_menu_label": "Меню",
   "nav_social_label": "Социальные сети",
   "blog_back": "Назад",
@@ -65,5 +62,7 @@
   "blog_no_content": "Текст статьи отсутствует.",
   "blog_default_category": "Логистика",
   "blog_placeholder": "Новости Логистики",
-  "blog_no_posts": "В этом разделе пока нет статей."
+  "blog_no_posts": "В этом разделе пока нет статей.",
+  "blog_invalid_date": "Неверная дата",
+  "blog_error_load": "Не удалось загрузить данные"
 }

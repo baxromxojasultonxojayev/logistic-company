@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Link } from "@/navigation";
-import { ArrowLeft, Calendar, Tag } from "lucide-react";
+import { ArrowLeft, Calendar, Tag, Loader2 } from "lucide-react";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -11,6 +11,9 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { useTranslations } from "next-intl";
+import { useRouter } from "next/navigation";
+import { useEffect, useState, useRef } from "react";
+import { api } from "@/lib/api";
 import "./style.scss";
 
 export interface BlogPostImage {
@@ -34,9 +37,92 @@ export interface BlogPost {
   description?: string;
 }
 
-export default function BlogPostClient({ post }: { post: BlogPost }) {
+export default function BlogPostClient({ slug }: { slug: string }) {
   const t = useTranslations();
-  const postContent = post?.content || post?.description;
+  const router = useRouter();
+  const [post, setPost] = useState<BlogPost | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    const fetchPost = async () => {
+      try {
+        setLoading(true);
+        const data = await api.get<BlogPost>(`/blog/posts/${slug}/`);
+        if (isMounted) {
+          setPost(data);
+          setError(null);
+        }
+      } catch (err) {
+        if (isMounted) {
+          console.error("Failed to fetch blog post:", err);
+          setError(t('blog_error_fetch') || "Ma'lumotni yuklab bo'lmadi");
+        }
+      } finally {
+        if (isMounted) {
+          setLoading(false);
+        }
+      }
+    };
+
+    if (slug) {
+      fetchPost();
+    }
+
+    return () => {
+      isMounted = false;
+    };
+  }, [slug]);
+
+  const handleBack = (e: React.MouseEvent) => {
+    e.preventDefault();
+    router.back();
+  };
+
+  if (loading) {
+    return (
+      <>
+        <Header />
+        <div className="blog-detail-loading">
+          <div className="container">
+            <Loader2 className="animate-spin text-accent" size={48} />
+            <div className="skeleton-image animate-pulse mt-8" />
+            <div className="skeleton-title animate-pulse" />
+            <div className="skeleton-text animate-pulse" />
+            <div className="skeleton-text animate-pulse" />
+          </div>
+        </div>
+        <Footer />
+      </>
+    );
+  }
+
+  if (error || !post) {
+    return (
+      <>
+        <Header />
+        <div className="blog-detail-error">
+          <div className="container">
+            <h2>{error || t('blog_not_found')}</h2>
+            <button onClick={handleBack} className="back-link !border-none !bg-transparent !cursor-pointer">
+              <ArrowLeft size={20} />
+              {t('blog_back')}
+            </button>
+          </div>
+        </div>
+        <Footer />
+      </>
+    );
+  }
+
+  const postContent = post?.content || post?.description || "";
+
+  const formatDate = (dateStr: string) => {
+    const date = new Date(dateStr);
+    return isNaN(date.getTime()) ? t('blog_invalid_date') || "Noma'lum sana" : date.toLocaleDateString();
+  };
 
   return (
     <>
@@ -44,7 +130,7 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
       <main className="blog-detail-page">
         <div className="container">
           {/* Images Slider at the top */}
-          <motion.div 
+          <motion.div
             className="post-slider-wrapper"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -78,33 +164,36 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
             )}
           </motion.div>
 
-          <motion.div 
+          <motion.div
             className="blog-detail-header"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
           >
-            <Link href="/" className="back-link">
+            <button
+              onClick={handleBack}
+              className="back-link !border-none !bg-transparent !cursor-pointer !p-0 !text-accent font-semibold hover:-translate-x-1 transition-transform"
+            >
               <ArrowLeft size={20} />
               {t('blog_back')}
-            </Link>
-            
+            </button>
+
             <div className="post-meta">
               <span className="post-category">
                 <Tag size={16} />
-                {post.service_type || t('blog_default_category')}
+                {post.service_type}
               </span>
-              <span className="post-date">
+              {/* <span className="post-date">
                 <Calendar size={16} />
-                {new Date(post.published_at || post.created_at).toLocaleDateString()}
-              </span>
+                {formatDate(post.published_at || post.created_at)}
+              </span> */}
             </div>
 
             <h1>{post.title}</h1>
             {post.excerpt && <p className="post-excerpt">{post.excerpt}</p>}
           </motion.div>
 
-          <motion.div 
+          <motion.div
             className="blog-detail-content"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -112,7 +201,7 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
           >
             <div className="post-body">
               {postContent ? (
-                <div 
+                <div
                   className="rich-text"
                   dangerouslySetInnerHTML={{ __html: postContent }}
                 />
@@ -127,3 +216,4 @@ export default function BlogPostClient({ post }: { post: BlogPost }) {
     </>
   );
 }
+

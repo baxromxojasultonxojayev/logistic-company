@@ -54,15 +54,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ local
   // Enable static rendering
   setRequestLocale(locale);
   
-  let post: BlogPost;
-  try {
-    post = await api.get<BlogPost>(`/blog/posts/${slug}/`);
-  } catch (error) {
-    console.error(`Failed to fetch post on server: ${slug}`, error);
-    // You could also return a 404 or a Custom NotFound component here
-    throw error;
-  }
-
-  return <BlogPostClient post={post} />;
+  return <BlogPostClient slug={slug} />;
 }
+
 

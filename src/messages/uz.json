@@ -65,5 +65,7 @@
   "blog_no_content": "Maqola matni mavjud emas.",
   "blog_default_category": "Logistika",
   "blog_placeholder": "Logistika Yangiliklari",
-  "blog_no_posts": "Bu bo'limda hali maqolalar mavjud emas."
+  "blog_no_posts": "Bu bo'limda hali maqolalar mavjud emas.",
+  "blog_invalid_date": "Noma'lum sana",
+  "blog_error_load": "Ma'lumotni yuklab bo'lmadi"
 }

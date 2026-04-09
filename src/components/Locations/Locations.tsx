@@ -21,7 +21,7 @@ export default function Locations() {
         <div className="map-wrapper">
           <div className="map-container">
             <Image
-              src="/images/services/china-logistics-map.jpg"
+              src="/images/services/map.jpg"
               alt="World Map"
               fill
               className="world-map-img"
