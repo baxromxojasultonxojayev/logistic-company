@@ -107,10 +107,10 @@ ul {
 
 .title {
   font-size: 3.5rem;
-  font-weight: 800;
-  letter-spacing: -0.04em;
+  font-weight: 900;
+  letter-spacing: -0.05em;
   margin-bottom: 24px;
-  line-height: 1.1;
+  line-height: 1;
 }
 
 .subtitle {

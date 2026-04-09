@@ -51,16 +51,18 @@
     transform: translateX(-50%);
 
     .header-nav-link {
-      font-weight: 600;
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      transition: all 0.3s ease;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--text-main);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       text-decoration: none;
       text-transform: uppercase;
-      letter-spacing: 0.05rem;
+      letter-spacing: 0.08em;
+      opacity: 0.7;
 
       &:hover {
         color: var(--accent);
+        opacity: 1;
         transform: translateY(-1px);
       }
     }
