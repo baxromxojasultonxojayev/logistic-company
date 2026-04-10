@@ -97,7 +97,7 @@ export default function Services() {
     {
       title: t('service_sea_title'),
       description: t('service_sea_desc'),
-      image: '/images/services/import-export.jpg'
+      image: '/images/services/customs-brokerage.jpg'
     },
     {
       title: t('service_warehouse_title'),
