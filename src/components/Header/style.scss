@@ -21,10 +21,11 @@
     align-items: center;
     justify-content: space-between;
     height: 100%;
-    padding: 0 32px;
+    padding: 0 40px;
   }
 
   .header-logo {
+    font-family: var(--font-aeonik), sans-serif;
     font-size: 1.6rem;
     font-weight: 900;
     color: var(--brand-navy);
@@ -33,6 +34,7 @@
     display: flex;
     align-items: center;
     gap: 2px;
+    flex-shrink: 0;
 
     span {
       color: var(--accent);
@@ -45,10 +47,9 @@
 
   .header-nav {
     display: flex;
-    gap: 40px;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    gap: 32px;
+    flex: 1;
+    justify-content: center;
 
     .header-nav-link {
       font-weight: 700;

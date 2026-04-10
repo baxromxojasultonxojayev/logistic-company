@@ -8,10 +8,9 @@ export default function About() {
   const t = useTranslations();
 
   const warehouses = [
-    { city: 'Guanchjou', image: '/images/wh-gz.png' },
-    { city: 'Ivu', image: '/images/wh-iwu.png' },
-    { city: 'Lyanyungan', image: '/images/wh-ly.png' },
-    { city: 'Xorgos', image: '/images/wh-xh.png' },
+    { city: 'Guanchjou', image: '/images/aboutus/fura.jpg' },
+    { city: 'Ivu', image: '/images/aboutus/plane-train.jpg' },
+    { city: 'Lyanyungan', image: '/images/aboutus/container.jpg' },
   ];
 
   return (
@@ -39,12 +38,12 @@ export default function About() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
             >
-              <div className="image-overlay">
-                <h3>{wh.city}</h3>
-              </div>
-              <div className="placeholder-img">
-                <span>{t('about_warehouse_label')} {wh.city}</span>
-              </div>
+
+              <img
+                src={wh.image}
+                alt={`${t('about_warehouse_label')} ${wh.city}`}
+                className="card-img"
+              />
             </motion.div>
           ))}
         </div>

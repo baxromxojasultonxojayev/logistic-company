@@ -9,6 +9,18 @@
     background: var(--bg-alt);
   }
 
+  .partners-title {
+    font-family: var(--font-aeonik), sans-serif;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--text-main);
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.8;
+  }
+
   .partners-marquee {
     position: relative;
     width: 100%;

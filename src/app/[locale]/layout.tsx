@@ -2,6 +2,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { ThemeProvider } from '@/components/ThemeProvider/ThemeProvider';
 import { LoadingProvider } from '@/components/LoadingProvider/LoadingProvider';
+import { aeonik, neuething } from '@/styles/fonts';
 import '@/styles/globals.css';
 
 
@@ -33,7 +34,7 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} suppressHydrationWarning>
-      <body suppressHydrationWarning>
+      <body className={`${aeonik.variable} ${neuething.variable}`} suppressHydrationWarning>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <ThemeProvider
             attribute="data-theme"

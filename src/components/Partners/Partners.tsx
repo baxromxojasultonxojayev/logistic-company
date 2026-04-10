@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useTranslations } from 'next-intl';
 import './style.scss';
 
 const partners = [
@@ -12,16 +13,23 @@ const partners = [
 ];
 
 export default function Partners() {
+  const t = useTranslations();
+
   return (
     <section className="partners-section">
       <div className="container">
+        <h2 className="partners-title">{t('clients_title')}</h2>
         <div className="partners-marquee">
           <motion.div 
             className="partners-track"
-            animate={{ x: [0, -1000] }}
-            transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{ 
+              duration: 25, 
+              repeat: Infinity, 
+              ease: 'linear' 
+            }}
           >
-            {[...partners, ...partners].map((partner, index) => (
+            {[...partners, ...partners, ...partners, ...partners].map((partner, index) => (
               <div key={index} className="partner-logo">
                 {partner.logo}
               </div>

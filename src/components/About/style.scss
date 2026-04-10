@@ -22,33 +22,27 @@
 
   .warehouse-card {
     position: relative;
-    height: 350px;
-    border-radius: var(--radius);
     overflow: hidden;
     background: var(--bg-card);
-    border: 1px solid var(--border);
     cursor: pointer;
     transition: all 0.3s ease;
+    border-radius: var(--radius);
 
     &:hover {
       transform: translateY(-8px);
       border-color: var(--accent);
 
-      .placeholder-img {
+      .card-img {
         transform: scale(1.1);
       }
     }
 
-    .placeholder-img {
+    .card-img {
       width: 100%;
       height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, var(--brand-navy) 0%, var(--brand-blue) 100%);
-      color: white;
-      font-weight: 700;
-      transition: transform 0.5s ease;
+      object-fit: scale-down;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      // border-radius: var(--radius);
     }
 
     .image-overlay {
@@ -56,8 +50,13 @@
       bottom: 0;
       left: 0;
       width: 100%;
-      padding: 30px;
-      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+      padding: 40px 30px;
+      background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.9) 0%,
+        rgba(0, 0, 0, 0.4) 50%,
+        transparent 100%
+      );
       z-index: 2;
       color: white;
 
