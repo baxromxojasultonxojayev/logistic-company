@@ -95,7 +95,11 @@ export default function Feedback() {
               </div>
               <div className="detail-item">
                 <strong>{t('feedback_phone_label')}:</strong>
-                <p>+998 (55) 520 02 02</p>
+                <p><a href="tel:+998555200202" className="phone-link">+998 (55) 520 02 02</a></p>
+              </div>
+              <div className="detail-item">
+                <strong>Email:</strong>
+                <p><a href="mailto:bsmconlog@gmail.com">bsmconlog@gmail.com</a></p>
               </div>
             </div>
           </motion.div>
