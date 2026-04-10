@@ -56,7 +56,7 @@ export default function Header() {
     <header className="header-site">
       <div className="container header-inner">
         <Link href="/" className="header-logo">
-          BSM <span>Consulting</span>
+          BSM <span>Logistics</span>
         </Link>
 
         <nav className={`header-nav ${isMenuOpen ? 'nav-open' : ''}`}>
