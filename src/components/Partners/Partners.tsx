@@ -6,10 +6,12 @@ import './style.scss';
 
 const partners = [
   { name: 'AKFA', logo: 'AKFA' },
+  { name: 'Afex', logo: 'Afex' },
+  { name: 'Mexmash', logo: 'Mexmash' },
   { name: 'Xiaomi', logo: 'Xiaomi' },
-  { name: 'Enter Engineering', logo: 'ENTER' },
-  { name: 'Artel', logo: 'Artel' },
-  { name: 'Texnopark', logo: 'Texnopark' },
+  { name: 'Atlant Fortuna', logo: 'Atlant Fortuna' },
+  { name: 'Goodwell Service Centre', logo: 'Goodwell' },
+  { name: 'Alutex', logo: 'Alutex' },
 ];
 
 export default function Partners() {
