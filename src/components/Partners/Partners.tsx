@@ -22,13 +22,13 @@ export default function Partners() {
       <div className="container">
         <h2 className="partners-title">{t('clients_title')}</h2>
         <div className="partners-marquee">
-          <motion.div 
+          <motion.div
             className="partners-track"
             animate={{ x: ["0%", "-50%"] }}
-            transition={{ 
-              duration: 25, 
-              repeat: Infinity, 
-              ease: 'linear' 
+            transition={{
+              duration: 25,
+              repeat: Infinity,
+              ease: 'linear'
             }}
           >
             {[...partners, ...partners, ...partners, ...partners].map((partner, index) => (
