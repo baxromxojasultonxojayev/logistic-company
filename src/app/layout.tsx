@@ -21,16 +21,17 @@ export async function generateMetadata(): Promise<Metadata> {
     alternates: {
       canonical: 'https://bsm-group.uz',
       languages: {
-        uz: 'https://bsm-group.uz/',
-        ru: 'https://bsm-group.uz/ru',
-        en: 'https://bsm-group.uz/en'
+        'uz': 'https://bsm-group.uz/',
+        'ru': 'https://bsm-group.uz/ru',
+        'en': 'https://bsm-group.uz/en',
+        'x-default': 'https://bsm-group.uz/',
       }
     },
     openGraph: {
       title: t('meta_title'),
       description: t('meta_description'),
       url: 'https://bsm-group.uz',
-      siteName: 'BSM Logistic',
+      siteName: 'BSM Group',
       locale: locale,
       type: 'website',
       images: [
@@ -38,7 +39,7 @@ export async function generateMetadata(): Promise<Metadata> {
           url: '/images/og-image.jpg',
           width: 1200,
           height: 630,
-          alt: 'BSM Logistic - Xalqaro yuk tashish',
+          alt: 'BSM Logistic - Xalqaro yuk tashish va Kargo',
         },
       ],
     },
@@ -61,6 +62,9 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     verification: {
       google: 'googlec95373def05d377d',
+    },
+    other: {
+      'apple-mobile-web-app-title': 'BSM Group',
     }
   };
 }
@@ -83,6 +87,19 @@ export default async function RootLayout({
       "telephone": "+998-55-520-02-02",
       "contactType": "customer service"
     }
+  };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://bsm-group.uz"
+      }
+    ]
   };
 
   const localBusinessJsonLd = {
@@ -119,6 +136,10 @@ export default async function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
         />
         <script
           type="application/ld+json"
