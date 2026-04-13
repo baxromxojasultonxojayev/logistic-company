@@ -60,21 +60,6 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="uz" suppressHydrationWarning>
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                var pathname = window.location.pathname;
-                if (pathname === '/uz' || pathname.startsWith('/uz/')) {
-                  var newPath = pathname.replace(/^\\/uz/, '') || '/';
-                  window.location.replace(newPath + window.location.search + window.location.hash);
-                }
-              })();
-            `,
-          }}
-        />
-      </head>
       <body className={`${aeonik.variable} ${neuething.variable}`} suppressHydrationWarning>
         <ThemeProvider
           attribute="data-theme"
