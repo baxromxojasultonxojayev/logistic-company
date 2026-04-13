@@ -1,4 +1,5 @@
 import { getTranslations, setRequestLocale, getMessages } from 'next-intl/server';
+import { Metadata } from 'next';
 import HomeContent from '@/components/Home/HomeContent';
 import LocaleProvider from '../LocaleProvider';
 
