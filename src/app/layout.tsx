@@ -60,7 +60,7 @@ export async function generateMetadata(): Promise<Metadata> {
       },
     },
     verification: {
-      google: 'google-site-verification-id', // User should replace this
+      google: 'G-D8X9T9X7X5', // User should replace this with their actual verification code from Search Console
     }
   };
 }
@@ -70,29 +70,38 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // We use the default locale for the base layout
-  // individual pages can specify their lang in their own layouts if needed
-  // but for bsm-group.uz, uz is the primary.
   const locale = routing.defaultLocale;
   
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "BSM Group / BSM Consulting and Logistics",
+    "alternateName": ["BSM-Group", "BSM Logistic", "BSM Logistics"],
     "url": "https://bsm-group.uz",
     "logo": "https://bsm-group.uz/logo.png",
+    "contactPoint": [
+      {
+        "@type": "ContactPoint",
+        "telephone": "+998-55-520-02-02",
+        "contactType": "customer service",
+        "areaServed": "UZ",
+        "availableLanguage": ["Uzbek", "Russian", "English"]
+      }
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Sodiq Azimov 3-tor ko'chasi, 1A",
+      "addressLocality": "Tashkent",
+      "addressRegion": "Yashnobod",
+      "postalCode": "100000",
+      "addressCountry": "UZ"
+    },
     "sameAs": [
       "https://www.instagram.com/bsm_consulting/",
-      "https://www.linkedin.com/company/bsm-group"
+      "https://www.linkedin.com/company/bsm-group",
+      "https://t.me/bsm_consulting"
     ],
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "telephone": "+998-55-520-02-02",
-      "contactType": "customer service",
-      "areaServed": "UZ",
-      "availableLanguage": ["Uzbek", "Russian", "English"]
-    },
-    "description": "Professional logistics and consulting services from China, Turkey, and Europe to Uzbekistan since 2016."
+    "description": "BSM Logistic - 2016-yildan buyon Xitoy, Turkiya va Yevropadan yuk tashish, bojxona rasmiylashtiruvi va ombor xizmatlari."
   };
 
   return (
