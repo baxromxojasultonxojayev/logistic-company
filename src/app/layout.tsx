@@ -19,7 +19,7 @@ export async function generateMetadata(): Promise<Metadata> {
     description: t('meta_description'),
     keywords: t('meta_keywords'),
     alternates: {
-      canonical: '/',
+      canonical: 'https://bsm-group.uz',
       languages: {
         uz: 'https://bsm-group.uz/',
         ru: 'https://bsm-group.uz/ru',
@@ -35,10 +35,10 @@ export async function generateMetadata(): Promise<Metadata> {
       type: 'website',
       images: [
         {
-          url: '/og-image.jpg', // User should provide this eventually
+          url: '/images/og-image.jpg',
           width: 1200,
           height: 630,
-          alt: 'BSM Logistic',
+          alt: 'BSM Logistic - Xalqaro yuk tashish',
         },
       ],
     },
@@ -46,7 +46,7 @@ export async function generateMetadata(): Promise<Metadata> {
       card: 'summary_large_image',
       title: t('meta_title'),
       description: t('meta_description'),
-      images: ['/og-image.jpg'],
+      images: ['/images/og-image.jpg'],
     },
     robots: {
       index: true,
@@ -70,29 +70,47 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // We use the default locale for the base layout
-  // individual pages can specify their lang in their own layouts if needed
-  // but for bsm-group.uz, uz is the primary.
   const locale = routing.defaultLocale;
 
-  const jsonLd = {
+  const organizationJsonLd = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "BSM Group / BSM Consulting and Logistics",
+    "name": "BSM Group",
     "url": "https://bsm-group.uz",
-    "logo": "https://bsm-group.uz/logo.png",
-    "sameAs": [
-      "https://www.instagram.com/bsm_consulting/",
-      "https://www.linkedin.com/company/bsm-group"
-    ],
+    "logo": "https://bsm-group.uz/images/logo.png",
     "contactPoint": {
       "@type": "ContactPoint",
       "telephone": "+998-55-520-02-02",
-      "contactType": "customer service",
-      "areaServed": "UZ",
-      "availableLanguage": ["Uzbek", "Russian", "English"]
+      "contactType": "customer service"
+    }
+  };
+
+  const localBusinessJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "LogisticsCenter",
+    "name": "BSM Logistic & Consulting",
+    "image": "https://bsm-group.uz/images/aboutus/fura.jpg",
+    "@id": "https://bsm-group.uz",
+    "url": "https://bsm-group.uz",
+    "telephone": "+998555200202",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Sodiq Azimov 3-tor ko'chasi, 1A",
+      "addressLocality": "Tashkent",
+      "postalCode": "100000",
+      "addressCountry": "UZ"
     },
-    "description": "Professional logistics and consulting services from China, Turkey, and Europe to Uzbekistan since 2016."
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 41.311081,
+      "longitude": 69.240562
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      "opens": "09:00",
+      "closes": "18:00"
+    }
   };
 
   return (
@@ -100,7 +118,11 @@ export default async function RootLayout({
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
         />
       </head>
       <body className={`${aeonik.variable} ${neuething.variable}`} suppressHydrationWarning>
