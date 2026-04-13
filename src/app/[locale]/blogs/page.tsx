@@ -17,7 +17,6 @@ interface BlogPost {
 export function generateStaticParams() {
   return [
     { locale: 'en' },
-    { locale: 'uz' },
     { locale: 'ru' }
   ];
 }

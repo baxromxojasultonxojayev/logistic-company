@@ -6,7 +6,7 @@ import { setRequestLocale } from 'next-intl/server';
 
 
 export async function generateStaticParams() {
-  const locales = ['en', 'uz', 'ru'];
+  const locales = ['en', 'ru'];
   
   try {
     interface PaginatedResponse {

@@ -56,7 +56,6 @@ export async function generateMetadata({
 export function generateStaticParams() {
   return [
     { locale: 'en' },
-    { locale: 'uz' },
     { locale: 'ru' }
   ];
 }

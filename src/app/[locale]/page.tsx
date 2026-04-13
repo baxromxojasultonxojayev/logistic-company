@@ -14,7 +14,6 @@ import { setRequestLocale } from 'next-intl/server';
 export function generateStaticParams() {
   return [
     { locale: 'en' },
-    { locale: 'uz' },
     { locale: 'ru' }
   ];
 }
