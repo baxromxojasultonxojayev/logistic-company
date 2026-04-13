@@ -1,10 +1,10 @@
+import { Metadata } from 'next';
+import { setRequestLocale, getMessages } from 'next-intl/server';
 import { api } from "@/lib/api";
 import BlogPostClient, { BlogPost } from "@/components/Blog/BlogPostClient";
-import { Metadata } from "next";
-import { setRequestLocale, getMessages } from 'next-intl/server';
-import LocaleProvider from '../../LocaleProvider';
+import LocaleProvider from "../../../LocaleProvider";
 
-const locale = 'uz';
+const locale = 'ru';
 
 export async function generateStaticParams() {
   try {
@@ -12,20 +12,17 @@ export async function generateStaticParams() {
       results: BlogPost[];
     }
     const data = await api.get<PaginatedResponse>("/blog/posts/", { locale });
-    
     return data.results.map((post) => ({
       slug: post.slug
     }));
   } catch (error) {
-    console.error("Failed to generate static params for root blog posts:", error);
+    console.error(`Failed to generate static params for RU blog posts:`, error);
     return [];
   }
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  
-  // Enable static rendering
   setRequestLocale(locale);
   
   try {
@@ -39,10 +36,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 }
 
-export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function RuBlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  
-  // Enable static rendering
   setRequestLocale(locale);
   const messages = await getMessages({ locale });
 

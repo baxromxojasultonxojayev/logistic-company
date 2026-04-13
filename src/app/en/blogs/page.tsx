@@ -1,10 +1,9 @@
 import { Metadata } from 'next';
 import { getTranslations, setRequestLocale, getMessages } from 'next-intl/server';
 import BlogsClient from '@/components/Blogs/BlogsClient';
-import { routing } from '@/i18n/routing';
-import LocaleProvider from '../LocaleProvider';
+import LocaleProvider from '../../LocaleProvider';
 
-const locale = 'uz';
+const locale = 'en';
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations({ locale });
@@ -15,7 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default async function IndexBlogsPage() {
+export default async function EnBlogsPage() {
   setRequestLocale(locale);
   const messages = await getMessages({ locale });
 

@@ -28,6 +28,17 @@ export default function Header() {
   const switchLocale = (newLocale: string) => {
     setIsLoading(true);
     setIsLangOpen(false);
+    
+    // Manual redirect for Uzbek (no prefix)
+    if (newLocale === 'uz') {
+      // If we are on a prefixed route, remove the prefix.
+      // pathname from next-intl is already stripped of the prefix.
+      // eslint-disable-next-line react-hooks/immutability
+      window.location.assign(pathname);
+      return;
+    }
+
+    // router.replace prefixing is handled by next-intl based on routing.ts
     router.replace(pathname, { locale: newLocale });
   };
 

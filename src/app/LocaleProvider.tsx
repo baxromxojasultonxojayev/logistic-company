@@ -17,9 +17,9 @@ export default function LocaleProvider({
 }: LocaleProviderProps) {
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>
-      {/* <Header /> */}
+      <Header />
       {children}
-      {/* <Footer /> */}
+      <Footer />
     </NextIntlClientProvider>
   );
 }

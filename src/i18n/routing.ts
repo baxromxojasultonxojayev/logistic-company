@@ -2,14 +2,14 @@ import { defineRouting } from 'next-intl/routing';
 import { createNavigation } from 'next-intl/navigation';
 
 export const routing = defineRouting({
-  // A list of all locales that are supported
-  locales: ['en', 'uz', 'ru'],
+  // Include all supported locales
+  locales: ['en', 'ru', 'uz'],
 
-  // Used when no locale matches
+  // Uzbek is the default and served at the root without a prefix
   defaultLocale: 'uz',
   
-  // Every locale needs a prefix (e.g. /uz, /en), which is
-  // highly recommended for Static Export reliability.
+  // Only add prefixes for other languages (ru, en)
+  // Since 'uz' is the defaultLocale, it won't get a prefix in 'as-needed' mode
   localePrefix: 'as-needed'
 });
 

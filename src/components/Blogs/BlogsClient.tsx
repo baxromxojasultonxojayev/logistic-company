@@ -4,8 +4,6 @@ import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "@/navigation";
 import { useTranslations, useLocale } from "next-intl";
-import Header from "@/components/Header/Header";
-import Footer from "@/components/Footer/Footer";
 import { api } from "@/lib/api";
 import { ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
 import "./style.scss";
@@ -77,8 +75,6 @@ export default function BlogsClient() {
     const fetchBlogs = async () => {
       try {
         setLoading(true);
-        // Correctly handle offset based on page and PAGE_SIZE if the API supports it, 
-        // or just use ?page=X if it's page-based.
         const response = await api.get<PaginatedResponse>(`/blog/posts/?page=${page}&page_size=${PAGE_SIZE}`, { locale });
         setPosts(response.results);
         setTotalCount(response.count);
@@ -94,11 +90,10 @@ export default function BlogsClient() {
 
     fetchBlogs();
 
-    // Scroll to top when page changes
     if (hasInitialFetched.current) {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-  }, [page, t]);
+  }, [page, t, locale]);
 
   const totalPages = Math.ceil(totalCount / PAGE_SIZE);
 
@@ -109,9 +104,7 @@ export default function BlogsClient() {
   };
 
   return (
-    <>
-      <Header />
-      <main className="blogs-index-page">
+    <main className="blogs-index-page">
         <section className="blogs-hero">
           <div className="container">
             <motion.div
@@ -218,9 +211,6 @@ export default function BlogsClient() {
             )}
           </div>
         </section>
-      </main>
-      <Footer />
-    </>
+    </main>
   );
 }
-

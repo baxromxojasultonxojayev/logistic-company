@@ -1,27 +1,28 @@
-import { Metadata } from 'next';
 import { getTranslations, setRequestLocale, getMessages } from 'next-intl/server';
-import BlogsClient from '@/components/Blogs/BlogsClient';
-import { routing } from '@/i18n/routing';
+import HomeContent from '@/components/Home/HomeContent';
 import LocaleProvider from '../LocaleProvider';
 
-const locale = 'uz';
+const locale = 'ru';
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations({ locale });
 
   return {
-    title: `${t('nav_blog')} | BSM Logistic`,
+    title: t('meta_title'),
     description: t('meta_description'),
+    alternates: {
+      canonical: `/${locale}`,
+    }
   };
 }
 
-export default async function IndexBlogsPage() {
+export default async function RuHomePage() {
   setRequestLocale(locale);
   const messages = await getMessages({ locale });
 
   return (
     <LocaleProvider locale={locale} messages={messages}>
-      <BlogsClient />
+      <HomeContent />
     </LocaleProvider>
   );
 }
