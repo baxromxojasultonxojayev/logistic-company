@@ -6,10 +6,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://bsm-group.uz';
   const locales = ['uz', 'ru', 'en'];
 
-  return locales.map((locale) => ({
-    url: `${baseUrl}${locale === 'uz' ? '' : `/${locale}`}`,
-    lastModified: new Date(),
-    changeFrequency: 'weekly',
-    priority: 1.0,
-  }));
+  return locales.map((locale) => {
+    const isDefault = locale === 'uz';
+    return {
+      url: `${baseUrl}${isDefault ? '' : `/${locale}`}`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: isDefault ? 1.0 : 0.8,
+    };
+  });
 }

@@ -21,9 +21,9 @@ export async function generateMetadata(): Promise<Metadata> {
     alternates: {
       canonical: '/',
       languages: {
-        uz: '/',
-        ru: '/ru',
-        en: '/en'
+        uz: 'https://bsm-group.uz/',
+        ru: 'https://bsm-group.uz/ru',
+        en: 'https://bsm-group.uz/en'
       }
     },
     openGraph: {
@@ -33,11 +33,20 @@ export async function generateMetadata(): Promise<Metadata> {
       siteName: 'BSM Logistic',
       locale: locale,
       type: 'website',
+      images: [
+        {
+          url: '/og-image.jpg', // User should provide this eventually
+          width: 1200,
+          height: 630,
+          alt: 'BSM Logistic',
+        },
+      ],
     },
     twitter: {
       card: 'summary_large_image',
       title: t('meta_title'),
       description: t('meta_description'),
+      images: ['/og-image.jpg'],
     },
     robots: {
       index: true,
@@ -50,6 +59,9 @@ export async function generateMetadata(): Promise<Metadata> {
         'max-snippet': -1,
       },
     },
+    verification: {
+      google: 'google-site-verification-id', // User should replace this
+    }
   };
 }
 
@@ -58,8 +70,39 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  // We use the default locale for the base layout
+  // individual pages can specify their lang in their own layouts if needed
+  // but for bsm-group.uz, uz is the primary.
+  const locale = routing.defaultLocale;
+  
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "BSM Group / BSM Consulting and Logistics",
+    "url": "https://bsm-group.uz",
+    "logo": "https://bsm-group.uz/logo.png",
+    "sameAs": [
+      "https://www.instagram.com/bsm_consulting/",
+      "https://www.linkedin.com/company/bsm-group"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+998-55-520-02-02",
+      "contactType": "customer service",
+      "areaServed": "UZ",
+      "availableLanguage": ["Uzbek", "Russian", "English"]
+    },
+    "description": "Professional logistics and consulting services from China, Turkey, and Europe to Uzbekistan since 2016."
+  };
+
   return (
-    <html lang="uz" suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className={`${aeonik.variable} ${neuething.variable}`} suppressHydrationWarning>
         <ThemeProvider
           attribute="data-theme"
