@@ -41,7 +41,7 @@
   "feedback_title": "Biz bilan bog‘laning",
   "feedback_description": "Yukingiz uchun eng to‘g‘ri yechimni topish uchun hoziroq bepul konsultatsiya oling",
   "feedback_address_label": "Manzil",
-  "feedback_address_value": "Toshkent sh., Sodiq Azimov ko'chasi, 1,2-uy.",
+  "feedback_address_value": "Toshkent sh, Yashnobod, Sodiq Azimov 3-tor ko'chasi, 1A",
   "feedback_phone_label": "Telefon",
   "feedback_name": "Ism",
   "feedback_name_placeholder": "Ismingizni kiriting",
@@ -49,8 +49,6 @@
   "feedback_message": "Xabar",
   "feedback_message_placeholder": "Xabar matni...",
   "feedback_submit": "Ariza qoldirish",
-
-
   "nav_home": "Bosh sahifa",
   "nav_services": "Xizmatlarimiz",
   "nav_blog": "Blogging",
@@ -58,7 +56,6 @@
   "nav_contact": "Aloqa",
   "nav_more": "Yana",
   "nav_footer_desc": "Xalqaro logistika va yuk tashish bo'yicha ishonchli hamkoringiz.",
-
   "nav_menu_label": "Menyu",
   "nav_social_label": "Ijtimoiy tarmoqlar",
   "blog_back": "Orqaga",

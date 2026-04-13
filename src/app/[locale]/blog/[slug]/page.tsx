@@ -12,9 +12,9 @@ export async function generateStaticParams() {
     interface PaginatedResponse {
       results: BlogPost[];
     }
-    const data = await api.get<PaginatedResponse>("/blog/posts/", { locale: 'uz' }); // Using default locale for static paths list
+    const data = await api.get<PaginatedResponse>("/blog/posts/", { locale: 'uz' }); 
     
-    // Generate paths for ALL locales for EACH slug
+    // Generate paths for non-default locales
     return locales.flatMap((locale) => 
       data.results.map((post) => ({
         locale,
@@ -23,7 +23,6 @@ export async function generateStaticParams() {
     );
   } catch (error) {
     console.error("Failed to generate static params for blog posts:", error);
-    // Return empty array if API is down to allow build to continue
     return [];
   }
 }

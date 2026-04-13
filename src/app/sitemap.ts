@@ -7,7 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const locales = ['uz', 'ru', 'en'];
 
   return locales.map((locale) => ({
-    url: `${baseUrl}/${locale}`,
+    url: `${baseUrl}${locale === 'uz' ? '' : `/${locale}`}`,
     lastModified: new Date(),
     changeFrequency: 'weekly',
     priority: 1.0,

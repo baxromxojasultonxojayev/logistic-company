@@ -10,7 +10,7 @@ export const routing = defineRouting({
   
   // Every locale needs a prefix (e.g. /uz, /en), which is
   // highly recommended for Static Export reliability.
-  localePrefix: 'always'
+  localePrefix: 'as-needed'
 });
 
 

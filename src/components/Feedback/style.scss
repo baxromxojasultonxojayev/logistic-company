@@ -5,13 +5,17 @@
   overflow: hidden;
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: -20%;
     right: -10%;
     width: 600px;
     height: 600px;
-    background: radial-gradient(circle, rgba(var(--accent-rgb), 0.05) 0%, transparent 70%);
+    background: radial-gradient(
+      circle,
+      rgba(var(--accent-rgb), 0.05) 0%,
+      transparent 70%
+    );
     pointer-events: none;
   }
 
@@ -19,7 +23,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 80px;
-    align-items: center;
+    align-items: start;
 
     @media (max-width: 968px) {
       grid-template-columns: 1fr;
@@ -34,7 +38,7 @@
       letter-spacing: -0.04em;
       margin-bottom: 24px;
       line-height: 1.1;
-      
+
       @media (max-width: 768px) {
         font-size: 3rem;
       }
@@ -66,6 +70,18 @@
           font-size: 1.5rem;
           font-weight: 700;
           color: var(--text-main);
+
+          a {
+            color: inherit;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+
+            &:hover {
+              color: var(--accent);
+              transform: translateX(5px);
+            }
+          }
         }
       }
     }
@@ -99,7 +115,8 @@
         padding-left: 4px;
       }
 
-      input, textarea {
+      input,
+      textarea {
         background: var(--bg-alt);
         border: 1px solid var(--border);
         padding: 18px 24px;
@@ -128,7 +145,6 @@
         min-height: 160px;
         resize: vertical;
       }
-
     }
 
     .status-message {
@@ -164,7 +180,7 @@
       border: none;
       box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.2);
 
-      [data-theme='dark'] & {
+      [data-theme="dark"] & {
         background: var(--accent);
       }
 
@@ -194,9 +210,9 @@
         transform: translateY(-4px) scale(1.02);
         box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.3);
         background: var(--brand-indigo);
-        
-        [data-theme='dark'] & {
-          background: lighten(#3B82F6, 10%);
+
+        [data-theme="dark"] & {
+          background: lighten(#3b82f6, 10%);
         }
 
         .btn-glow {

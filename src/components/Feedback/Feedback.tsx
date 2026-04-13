@@ -91,7 +91,16 @@ export default function Feedback() {
             <div className="feedback-details">
               <div className="detail-item">
                 <strong>{t('feedback_address_label')}:</strong>
-                <p>{t('feedback_address_value')}</p>
+                <p>
+                  <a 
+                    href="https://yandex.uz/maps/10335/tashkent/house/YkAYdA5jSEQEQFprfX9xdHRmYA==/?ll=69.293014%2C41.305941&z=18.23" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="address-link"
+                  >
+                    {t('feedback_address_value')}
+                  </a>
+                </p>
               </div>
               <div className="detail-item">
                 <strong>{t('feedback_phone_label')}:</strong>

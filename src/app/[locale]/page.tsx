@@ -27,7 +27,7 @@ export default async function IndexPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  
+
   // Enable static rendering
   setRequestLocale(locale);
 

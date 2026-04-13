@@ -84,21 +84,21 @@ export default function Services() {
       description: t('service_air_desc'),
       image: '/images/services/air-freight.jpg'
     },
-    // {
-    //   title: t('service_customs_title'),
-    //   description: t('service_customs_desc'),
-    //   image: '/images/services/customs-brokerage.jpg'
-    // },
+    {
+      title: t('service_customs_title'),
+      description: t('service_customs_desc'),
+      image: '/images/services/customs-brokerage.jpg'
+    },
     {
       title: t('service_consulting_title'),
       description: t('service_consulting_desc'),
       image: '/images/services/logistics-consulting.jpg'
     },
-    {
-      title: t('service_sea_title'),
-      description: t('service_sea_desc'),
-      image: '/images/services/customs-brokerage.jpg'
-    },
+    // {
+    //   title: t('service_sea_title'),
+    //   description: t('service_sea_desc'),
+    //   image: '/images/services/customs-brokerage.jpg'
+    // },
     {
       title: t('service_warehouse_title'),
       description: t('service_warehouse_desc'),
