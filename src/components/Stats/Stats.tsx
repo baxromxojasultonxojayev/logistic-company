@@ -34,7 +34,7 @@ export default function Stats() {
 
   const stats = [
     { value: '2016', label: t('stats_since') },
-    { value: '50+', label: t('stats_experts') },
+    { value: '70+', label: t('stats_experts') },
     { value: '500+', label: t('stats_clients') },
   ];
 

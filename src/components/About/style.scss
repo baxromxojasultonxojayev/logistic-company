@@ -11,6 +11,11 @@
 
   .about-content {
     max-width: 800px;
+    
+    .subtitle {
+      white-space: pre-wrap;
+      line-height: 1.6;
+    }
   }
 
   .warehouse-grid {
