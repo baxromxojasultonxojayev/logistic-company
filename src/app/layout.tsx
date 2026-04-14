@@ -4,6 +4,8 @@ import { routing } from '@/i18n/routing';
 import { ThemeProvider } from '@/components/ThemeProvider/ThemeProvider';
 import { LoadingProvider } from '@/components/LoadingProvider/LoadingProvider';
 import { aeonik, neuething } from '@/styles/fonts';
+import { Suspense } from 'react';
+import GoogleAnalytics from '@/components/Analytics/GoogleAnalytics';
 import '@/styles/globals.css';
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -154,6 +156,9 @@ export default async function RootLayout({
           disableTransitionOnChange
         >
           <LoadingProvider>
+            <Suspense fallback={null}>
+              <GoogleAnalytics measurementId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ''} />
+            </Suspense>
             {children}
           </LoadingProvider>
         </ThemeProvider>
