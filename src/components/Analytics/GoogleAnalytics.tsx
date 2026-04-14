@@ -9,10 +9,12 @@ export default function GoogleAnalytics({ measurementId }: { measurementId: stri
   const searchParams = useSearchParams();
 
   useEffect(() => {
+    if (!measurementId || measurementId === 'G-XXXXXXXXXX') return;
     ReactGA.initialize(measurementId);
   }, [measurementId]);
 
   useEffect(() => {
+    if (!measurementId || measurementId === 'G-XXXXXXXXXX') return;
     const url = pathname + searchParams.toString();
     
     ReactGA.send({
@@ -20,7 +22,7 @@ export default function GoogleAnalytics({ measurementId }: { measurementId: stri
       page: url,
       title: document.title,
     });
-  }, [pathname, searchParams]);
+  }, [pathname, searchParams, measurementId]);
 
   return null;
 }
