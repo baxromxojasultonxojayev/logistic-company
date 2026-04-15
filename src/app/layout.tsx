@@ -82,13 +82,37 @@ export default async function RootLayout({
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "BSM Group",
+    "alternateName": [
+      "BSM Logistic",
+      "BSM Logistics",
+      "BSM Consulting",
+      "BSM Logistics & Consulting",
+      "BSM Group Uzbekistan",
+      "bsmgroup",
+      "bsm-group",
+      "bsmlogistics",
+      "bsm logistic"
+    ],
     "url": "https://bsm-group.uz",
     "logo": "https://bsm-group.uz/images/logo.png",
+    "description": "BSM Group - 2016-yildan buyon xalqaro logistika, yuk tashish, Xitoydan kargo, bojxona rasmiylashtiruvi va ombor xizmatlarini ko'rsatuvchi ishonchli hamkor.",
+    "foundingDate": "2016",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Sodiq Azimov 3-tor ko'chasi, 1A",
+      "addressLocality": "Tashkent",
+      "postalCode": "100000",
+      "addressCountry": "UZ"
+    },
     "contactPoint": {
       "@type": "ContactPoint",
       "telephone": "+998-55-520-02-02",
-      "contactType": "customer service"
-    }
+      "contactType": "customer service",
+      "availableLanguage": ["uz", "ru", "en"]
+    },
+    "sameAs": [
+      "https://www.instagram.com/bsm_consulting"
+    ]
   };
 
   const breadcrumbJsonLd = {
@@ -107,7 +131,16 @@ export default async function RootLayout({
   const localBusinessJsonLd = {
     "@context": "https://schema.org",
     "@type": "LogisticsCenter",
-    "name": "BSM Logistic & Consulting",
+    "name": "BSM Group",
+    "alternateName": [
+      "BSM Logistic & Consulting",
+      "BSM Logistics",
+      "BSM Logistic",
+      "bsmgroup",
+      "bsm-group",
+      "bsmlogistics"
+    ],
+    "description": "BSM Group - xalqaro logistika, Xitoydan kargo, yuk tashish, bojxona rasmiylashtiruvi va ombor xizmatlari",
     "image": "https://bsm-group.uz/images/aboutus/fura.jpg",
     "@id": "https://bsm-group.uz",
     "url": "https://bsm-group.uz",
