@@ -1,7 +1,6 @@
 import { Metadata } from 'next';
 import { getTranslations, setRequestLocale, getMessages } from 'next-intl/server';
 import BlogsClient from '@/components/Blogs/BlogsClient';
-import { routing } from '@/i18n/routing';
 import LocaleProvider from '../LocaleProvider';
 
 const locale = 'uz';

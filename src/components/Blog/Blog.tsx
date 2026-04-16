@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { useTranslations, useLocale } from 'next-intl';
+import { useTranslations, } from 'next-intl';
 import { api } from '@/lib/api';
 import { Link } from '@/navigation';
 import { ChevronRight } from 'lucide-react';
@@ -29,7 +29,6 @@ interface BlogPost {
 
 export default function Blog() {
   const t = useTranslations();
-  const locale = useLocale();
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -41,7 +40,7 @@ export default function Blog() {
         interface PaginatedResponse {
           results: BlogPost[];
         }
-        const data = await api.get<PaginatedResponse>("/blog/posts/", { locale });
+        const data = await api.get<PaginatedResponse>("/blog/posts/",);
         // Only show first 3 posts on home page
         setPosts(data.results.slice(0, 3));
       } catch (err) {
@@ -104,9 +103,9 @@ export default function Blog() {
         <div className="blog-grid">
           {posts.map((post, index) => {
             const displayImage = post.image || (post.images && post.images.length > 0 ? post.images[0].image : null);
-            
+
             return (
-              <motion.article 
+              <motion.article
                 key={post.id || index}
                 className="blog-post"
                 initial={{ opacity: 0, y: 20 }}

@@ -11,8 +11,8 @@ export async function generateStaticParams() {
     interface PaginatedResponse {
       results: BlogPost[];
     }
-    const data = await api.get<PaginatedResponse>("/blog/posts/", { locale });
-    
+    const data = await api.get<PaginatedResponse>("/blog/posts/");
+
     return data.results.map((post) => ({
       slug: post.slug
     }));
@@ -24,10 +24,10 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  
+
   // Enable static rendering
   setRequestLocale(locale);
-  
+
   try {
     const post = await api.get<BlogPost>(`/blog/posts/${slug}/`, { locale });
     return {
@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  
+
   // Enable static rendering
   setRequestLocale(locale);
   const messages = await getMessages({ locale });
