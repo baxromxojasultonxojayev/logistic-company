@@ -65,6 +65,11 @@ export async function generateMetadata(): Promise<Metadata> {
     verification: {
       google: 'googlec95373def05d377d',
     },
+    icons: {
+      icon: '/bsm-logo.svg',
+      shortcut: '/bsm-logo.svg',
+      apple: '/bsm-logo.svg',
+    },
     other: {
       'apple-mobile-web-app-title': 'BSM Group',
     }
