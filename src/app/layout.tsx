@@ -65,10 +65,14 @@ export async function generateMetadata(): Promise<Metadata> {
     verification: {
       google: 'googlec95373def05d377d',
     },
+    manifest: '/manifest.json',
     icons: {
-      icon: '/bsm-logo.svg',
-      shortcut: '/bsm-logo.svg',
-      apple: '/bsm-logo.svg',
+      icon: [
+        { url: '/bsm-logo.svg', type: 'image/svg+xml' },
+        { url: '/favicon.png', sizes: '48x48', type: 'image/png' },
+      ],
+      shortcut: '/favicon.png',
+      apple: '/icon-512.png',
     },
     other: {
       'apple-mobile-web-app-title': 'BSM Group',
