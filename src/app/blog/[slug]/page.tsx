@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   setRequestLocale(locale);
 
   try {
-    const post = await api.get<BlogPost>(`/blog/posts/${slug}/`, { locale });
+    const post = await api.get<BlogPost>(`/blog/posts/${slug}/`);
     return {
       title: post.title,
       description: post.excerpt || post.description

@@ -75,7 +75,7 @@ export default function BlogsClient() {
     const fetchBlogs = async () => {
       try {
         setLoading(true);
-        const response = await api.get<PaginatedResponse>(`/blog/posts/?page=${page}&page_size=${PAGE_SIZE}`, { locale });
+        const response = await api.get<PaginatedResponse>(`/blog/posts/?page=${page}&page_size=${PAGE_SIZE}`);
         setPosts(response.results);
         setTotalCount(response.count);
         setError(null);
@@ -105,112 +105,112 @@ export default function BlogsClient() {
 
   return (
     <main className="blogs-index-page">
-        <section className="blogs-hero">
-          <div className="container">
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="blogs-hero-content"
-            >
-              <h1>{t('nav_blog')}</h1>
-              <p>{t('nav_footer_desc')}</p>
-            </motion.div>
-          </div>
-        </section>
+      <section className="blogs-hero">
+        <div className="container">
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="blogs-hero-content"
+          >
+            <h1>{t('nav_blog')}</h1>
+            <p>{t('nav_footer_desc')}</p>
+          </motion.div>
+        </div>
+      </section>
 
-        <section className="blogs-grid-section">
-          <div className="container">
-            {loading ? (
-              <div className="blogs-loading">
-                <Loader2 className="animate-spin text-accent" size={48} />
-              </div>
-            ) : error ? (
-              <div className="blogs-error">
-                <p>{error}</p>
-              </div>
-            ) : (
-              <>
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={page}
-                    className="blogs-grid"
-                    variants={containerVariants}
-                    initial="hidden"
-                    animate="visible"
-                    exit={{ opacity: 0 }}
+      <section className="blogs-grid-section">
+        <div className="container">
+          {loading ? (
+            <div className="blogs-loading">
+              <Loader2 className="animate-spin text-accent" size={48} />
+            </div>
+          ) : error ? (
+            <div className="blogs-error">
+              <p>{error}</p>
+            </div>
+          ) : (
+            <>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={page}
+                  className="blogs-grid"
+                  variants={containerVariants}
+                  initial="hidden"
+                  animate="visible"
+                  exit={{ opacity: 0 }}
+                >
+                  {posts.map((post) => {
+                    const displayImage = post.image || (post.images && post.images.length > 0 ? post.images[0].image : null);
+
+                    return (
+                      <motion.div key={post.id} variants={itemVariants}>
+                        <Link href={`/blog/${post.slug}`} className="blog-card">
+                          <div className="card-image">
+                            {displayImage ? (
+                              /* eslint-disable-next-line @next/next/no-img-element */
+                              <img src={displayImage} alt={post.title} />
+                            ) : (
+                              <div className="placeholder">{t('blog_placeholder')}</div>
+                            )}
+                            <div className="card-badge">
+                              {post.service_type || t('blog_default_category')}
+                            </div>
+                          </div>
+                          <div className="card-content">
+                            <span className="card-date">
+                              {new Date(post.published_at || post.created_at).toLocaleDateString()}
+                            </span>
+                            <h3>{post.title}</h3>
+                            {post.excerpt && <p>{post.excerpt}</p>}
+                          </div>
+                        </Link>
+                      </motion.div>
+                    );
+                  })}
+                </motion.div>
+              </AnimatePresence>
+
+              {totalPages > 1 && (
+                <div className="pagination">
+                  <button
+                    className="pagination-btn"
+                    onClick={() => handlePageChange(page - 1)}
+                    disabled={page === 1}
                   >
-                    {posts.map((post) => {
-                      const displayImage = post.image || (post.images && post.images.length > 0 ? post.images[0].image : null);
+                    <ChevronLeft size={20} />
+                  </button>
 
-                      return (
-                        <motion.div key={post.id} variants={itemVariants}>
-                          <Link href={`/blog/${post.slug}`} className="blog-card">
-                            <div className="card-image">
-                              {displayImage ? (
-                                /* eslint-disable-next-line @next/next/no-img-element */
-                                <img src={displayImage} alt={post.title} />
-                              ) : (
-                                <div className="placeholder">{t('blog_placeholder')}</div>
-                              )}
-                              <div className="card-badge">
-                                {post.service_type || t('blog_default_category')}
-                              </div>
-                            </div>
-                            <div className="card-content">
-                              <span className="card-date">
-                                {new Date(post.published_at || post.created_at).toLocaleDateString()}
-                              </span>
-                              <h3>{post.title}</h3>
-                              {post.excerpt && <p>{post.excerpt}</p>}
-                            </div>
-                          </Link>
-                        </motion.div>
-                      );
-                    })}
-                  </motion.div>
-                </AnimatePresence>
-
-                {totalPages > 1 && (
-                  <div className="pagination">
-                    <button
-                      className="pagination-btn"
-                      onClick={() => handlePageChange(page - 1)}
-                      disabled={page === 1}
-                    >
-                      <ChevronLeft size={20} />
-                    </button>
-
-                    <div className="page-numbers">
-                      {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNum) => (
-                        <button
-                          key={pageNum}
-                          className={`page-num ${page === pageNum ? 'active' : ''}`}
-                          onClick={() => handlePageChange(pageNum)}
-                        >
-                          {pageNum}
-                        </button>
-                      ))}
-                    </div>
-
-                    <button
-                      className="pagination-btn"
-                      onClick={() => handlePageChange(page + 1)}
-                      disabled={page === totalPages}
-                    >
-                      <ChevronRight size={20} />
-                    </button>
+                  <div className="page-numbers">
+                    {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNum) => (
+                      <button
+                        key={pageNum}
+                        className={`page-num ${page === pageNum ? 'active' : ''}`}
+                        onClick={() => handlePageChange(pageNum)}
+                      >
+                        {pageNum}
+                      </button>
+                    ))}
                   </div>
-                )}
-              </>
-            )}
 
-            {!loading && posts.length === 0 && !error && (
-              <div className="no-blogs">
-                <p>{t('blog_no_posts')}</p>
-              </div>
-            )}
-          </div>
-        </section>
+                  <button
+                    className="pagination-btn"
+                    onClick={() => handlePageChange(page + 1)}
+                    disabled={page === totalPages}
+                  >
+                    <ChevronRight size={20} />
+                  </button>
+                </div>
+              )}
+            </>
+          )}
+
+          {!loading && posts.length === 0 && !error && (
+            <div className="no-blogs">
+              <p>{t('blog_no_posts')}</p>
+            </div>
+          )}
+        </div>
+      </section>
     </main>
   );
 }

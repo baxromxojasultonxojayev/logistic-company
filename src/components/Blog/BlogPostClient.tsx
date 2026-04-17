@@ -48,7 +48,7 @@ export default function BlogPostClient({ slug }: { slug: string }) {
     const fetchPost = async () => {
       try {
         setLoading(true);
-        const data = await api.get<BlogPost>(`/blog/posts/${slug}/`, { locale });
+        const data = await api.get<BlogPost>(`/blog/posts/${slug}/`);
         if (isMounted) {
           setPost(data);
           setError(null);

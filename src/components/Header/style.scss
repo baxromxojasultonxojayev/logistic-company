@@ -11,7 +11,7 @@
   z-index: 1000;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 
-  [data-theme='dark'] & {
+  [data-theme="dark"] & {
     background: rgba(11, 14, 20, 0.7);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   }
@@ -39,9 +39,9 @@
     span {
       color: var(--accent);
     }
-    
-    [data-theme='dark'] & {
-      color: #FFFFFF;
+
+    [data-theme="dark"] & {
+      color: #ffffff;
     }
   }
 
@@ -108,8 +108,9 @@
       font-size: 0.85rem;
       cursor: pointer;
       transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      
-      &:hover, &.active {
+
+      &:hover,
+      &.active {
         background: var(--bg);
         border-color: var(--accent);
         color: var(--accent);
@@ -136,13 +137,13 @@
       border: 1px solid rgba(0, 0, 0, 0.08);
       border-radius: 18px;
       padding: 8px;
-      box-shadow: 
+      box-shadow:
         0 4px 6px -1px rgba(0, 0, 0, 0.1),
         0 10px 30px -5px rgba(0, 0, 0, 0.15);
       z-index: 1001;
       overflow: hidden;
 
-      [data-theme='dark'] & {
+      [data-theme="dark"] & {
         background: rgba(11, 14, 20, 0.85);
         border-color: rgba(255, 255, 255, 0.08);
       }
@@ -210,7 +211,7 @@
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 
-    [data-theme='dark'] & {
+    [data-theme="dark"] & {
       background: var(--accent);
     }
 
@@ -218,9 +219,9 @@
       background: var(--brand-indigo);
       transform: translateY(-2px);
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-      
-      [data-theme='dark'] & {
-        background: lighten(#3B82F6, 10%);
+
+      [data-theme="dark"] & {
+        background: lighten(#3b82f6, 10%);
       }
     }
   }
@@ -239,7 +240,7 @@
       position: static;
       transform: none;
     }
-    
+
     .header-actions {
       gap: 16px;
     }
@@ -249,7 +250,7 @@
     .header-inner {
       padding: 0 20px;
     }
-    
+
     .header-nav:not(.nav-open) {
       display: none;
     }
@@ -261,7 +262,7 @@
     .header-cta-button {
       display: none;
     }
-    
+
     .header-theme-toggle {
       display: none;
     }
@@ -272,7 +273,7 @@
       .lang-toggle {
         padding: 6px 10px;
         gap: 6px;
-        
+
         span {
           font-size: 0.8rem;
         }
