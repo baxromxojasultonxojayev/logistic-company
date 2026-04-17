@@ -16,7 +16,7 @@ export async function generateMetadata(): Promise<Metadata> {
     metadataBase: new URL('https://bsm-group.uz'),
     title: {
       default: t('meta_title'),
-      template: `%s | BSM Logistic`
+      template: `%s | BSM Group`
     },
     description: t('meta_description'),
     keywords: t('meta_keywords'),
@@ -41,7 +41,7 @@ export async function generateMetadata(): Promise<Metadata> {
           url: '/images/og-image.jpg',
           width: 1200,
           height: 630,
-          alt: 'BSM Logistic - Xalqaro yuk tashish va Kargo',
+          alt: 'BSM Group - Xalqaro yuk tashish va Kargo',
         },
       ],
     },
@@ -68,11 +68,11 @@ export async function generateMetadata(): Promise<Metadata> {
     manifest: '/manifest.json',
     icons: {
       icon: [
-        { url: '/bsm-logo.svg', type: 'image/svg+xml' },
-        { url: '/favicon.png', sizes: '48x48', type: 'image/png' },
+        { url: '/bsm-logo.svg?v=2', type: 'image/svg+xml' },
+        { url: '/favicon.png?v=2', sizes: '48x48', type: 'image/png' },
       ],
-      shortcut: '/favicon.png',
-      apple: '/icon-512.png',
+      shortcut: '/favicon.png?v=2',
+      apple: '/icon-512.png?v=2',
     },
     other: {
       'apple-mobile-web-app-title': 'BSM Group',
