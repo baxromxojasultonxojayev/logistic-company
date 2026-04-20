@@ -19,15 +19,22 @@ async function apiRequest<TResponse, TBody = void>(
 ): Promise<TResponse> {
   const { method = "GET", body, headers = {}, locale } = options;
 
-  // Ensure endpoint starts with a slash
-  let cleanEndpoint = endpoint.startsWith("/") ? endpoint : `/${endpoint}`;
+  const cleanEndpoint = endpoint.startsWith("/") ? endpoint : `/${endpoint}`;
 
-  // Add lang query parameter if locale is provided
-  if (locale) {
-    const separator = cleanEndpoint.includes("?") ? "&" : "?";
-    cleanEndpoint = `${cleanEndpoint}${separator}lang=${locale}`;
+  let activeLocale = locale;
+
+  if (typeof window !== "undefined") {
+    const cookieValue = document.cookie
+      .split("; ")
+      .find((row) => row.startsWith("NEXT_LOCALE="))
+      ?.split("=")[1];
+
+    if (cookieValue) {
+      activeLocale = cookieValue;
+    }
   }
 
+  const finalLocale = activeLocale || "uz";
   const url = `${BASE_URL}${cleanEndpoint}`;
 
   const fetchOptions: RequestInit = {
@@ -35,7 +42,7 @@ async function apiRequest<TResponse, TBody = void>(
     headers: {
       "Content-Type": "application/json",
       "x-api-key": process.env.NEXT_PUBLIC_API_KEY || "",
-      "Accept-Language": locale || "uz",
+      "Accept-Language": finalLocale,
       ...headers,
     },
   };
