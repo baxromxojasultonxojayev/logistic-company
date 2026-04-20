@@ -68,11 +68,13 @@ export async function generateMetadata(): Promise<Metadata> {
     manifest: '/manifest.json',
     icons: {
       icon: [
-        { url: '/bsm-logo.svg?v=2', type: 'image/svg+xml' },
-        { url: '/favicon.png?v=2', sizes: '48x48', type: 'image/png' },
+        { url: '/bsm-logo.svg?v=3', type: 'image/svg+xml' },
+        { url: '/favicon.png?v=3', sizes: '48x48', type: 'image/png' },
+        { url: '/icon-192.png?v=3', sizes: '192x192', type: 'image/png' },
+        { url: '/icon-512.png?v=3', sizes: '512x512', type: 'image/png' },
       ],
-      shortcut: '/favicon.png?v=2',
-      apple: '/icon-512.png?v=2',
+      shortcut: '/favicon.png?v=3',
+      apple: '/icon-512.png?v=3',
     },
     other: {
       'apple-mobile-web-app-title': 'BSM Group',
@@ -103,7 +105,7 @@ export default async function RootLayout({
       "bsm logistic"
     ],
     "url": "https://bsm-group.uz",
-    "logo": "https://bsm-group.uz/images/logo.png",
+    "logo": "https://bsm-group.uz/icon-512.png",
     "description": "BSM Group - 2016-yildan buyon xalqaro logistika, yuk tashish, Xitoydan kargo, bojxona rasmiylashtiruvi va ombor xizmatlarini ko'rsatuvchi ishonchli hamkor.",
     "foundingDate": "2016",
     "address": {
