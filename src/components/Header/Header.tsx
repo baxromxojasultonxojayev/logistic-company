@@ -58,14 +58,12 @@ export default function Header() {
     { name: t('nav_about'), href: '/#about' },
   ];
 
-
-  if (!mounted) return null;
-
   return (
     <header className="header-site">
       <div className="container header-inner">
         <Link href="/" className="header-logo">
-          BSM <span>Logistics</span>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/new-image/bsm-logo.svg" alt="BSM Logistics" width={94} height={44} className="logo-img" />
         </Link>
 
         <nav className={`header-nav ${isMenuOpen ? 'nav-open' : ''}`}>
@@ -86,6 +84,9 @@ export default function Header() {
             <button
               className={`lang-toggle ${isLangOpen ? 'active' : ''}`}
               onClick={() => setIsLangOpen(!isLangOpen)}
+              aria-label="Change language"
+              aria-haspopup="listbox"
+              aria-expanded={isLangOpen}
             >
               <Globe size={18} />
               <span>{locale.toUpperCase()}</span>
@@ -121,7 +122,7 @@ export default function Header() {
             className="header-theme-toggle"
             aria-label="Toggle theme"
           >
-            {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+            {mounted && theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
           </button>
 
           <Link href="/#feedback" className="header-cta-button">
@@ -132,6 +133,8 @@ export default function Header() {
           <button
             className="header-mobile-toggle"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={isMenuOpen}
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>

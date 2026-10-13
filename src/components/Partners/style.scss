@@ -36,7 +36,7 @@
     font-size: 1.8rem;
     font-weight: 800;
     // color: var(--text-muted);
-    opacity: 0.4;
+    opacity: 0.6; // >= 0.6 keeps WCAG AA contrast for large text
     transition: all 0.3s ease;
     cursor: default;
     display: flex;

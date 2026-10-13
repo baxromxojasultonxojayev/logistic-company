@@ -44,16 +44,16 @@ export default function Blog() {
         // Only show first 3 posts on home page
         setPosts(data.results.slice(0, 3));
       } catch (err) {
-        const errorMessage = err instanceof Error ? err.message : 'Error loading blog posts';
-        console.error('Failed to fetch blog posts:', errorMessage);
-        setError(errorMessage);
+        console.error('Failed to fetch blog posts:', err instanceof Error ? err.message : err);
+        // Show a translated message instead of the raw API error
+        setError(t('blog_error_load'));
       } finally {
         setLoading(false);
       }
     };
 
     fetchPosts();
-  }, []);
+  }, [t]);
 
   if (loading) {
     return (

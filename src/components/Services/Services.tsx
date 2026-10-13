@@ -2,7 +2,6 @@
 
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { useTranslations } from 'next-intl';
-import { ChevronRight } from 'lucide-react';
 import { useRef } from 'react';
 import './style.scss';
 
@@ -45,7 +44,8 @@ function ServiceRow({ title, description, image, index }: ServiceRowProps) {
           style={{ y: imageY }}
           className="image-wrapper"
         >
-          <img src={image} alt={title} />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={image} alt={title} width={1000} height={563} loading="lazy" decoding="async" />
           <div className="image-overlay" />
         </motion.div>
       </div>
@@ -72,47 +72,47 @@ export default function Services() {
     {
       title: t('service_road_title'),
       description: t('service_road_desc'),
-      image: '/images/services/road-truck.jpg'
+      image: '/new-image/road-truck.webp'
     },
     {
       title: t('service_rail_title'),
       description: t('service_rail_desc'),
-      image: '/images/services/rail-transport.jpg'
+      image: '/images/services/rail-transport.webp'
     },
     {
       title: t('service_air_title'),
       description: t('service_air_desc'),
-      image: '/images/services/air-freight.jpg'
+      image: '/images/services/air-freight.webp'
     },
     {
       title: t('service_customs_title'),
       description: t('service_customs_desc'),
-      image: '/images/services/customs-brokerage.jpg'
+      image: '/images/services/customs-brokerage.webp'
     },
     {
       title: t('service_consulting_title'),
       description: t('service_consulting_desc'),
-      image: '/images/services/logistics-consulting.jpg'
+      image: '/images/services/logistics-consulting.webp'
     },
     // {
     //   title: t('service_sea_title'),
     //   description: t('service_sea_desc'),
-    //   image: '/images/services/customs-brokerage.jpg'
+    //   image: '/images/services/customs-brokerage.webp'
     // },
     {
       title: t('service_warehouse_title'),
       description: t('service_warehouse_desc'),
-      image: '/images/services/warehouse-storage.jpg'
+      image: '/images/services/warehouse-storage.webp'
     },
     {
       title: t('service_express_title'),
       description: t('service_express_desc'),
-      image: '/images/services/domestic-logistics.jpg'
+      image: '/new-image/toshkent-samarqand.webp'
     },
     {
       title: t('service_china_title'),
       description: t('service_china_desc'),
-      image: '/images/services/china-internal-logistics.jpg'
+      image: '/images/services/china-internal-logistics.webp'
     },
     // {
     //   title: t('service_insurance_title'),

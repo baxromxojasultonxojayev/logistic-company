@@ -31,7 +31,8 @@ export default function Footer() {
         <div className="footer-grid">
           <div className="footer-brand">
             <Link href="/" className="footer-logo">
-              BSM <span>Logistics</span>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/new-image/bsm-logo.svg" alt="BSM Logistics" width={119} height={56} className="logo-img" />
             </Link>
             <p>{t('nav_footer_desc')}</p>
           </div>

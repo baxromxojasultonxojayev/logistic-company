@@ -4,11 +4,15 @@
   display: flex;
   align-items: center;
   overflow: hidden;
-  background-image: url("/images/1.jpg");
+  background-image: url("/new-image/hero-mobile.webp");
   background-size: cover;
   background-position: center;
   background-attachment: scroll;
   transition: background 0.3s ease;
+
+  @media (min-width: 829px) {
+    background-image: url("/new-image/hero.webp");
+  }
 
   @media (min-width: 1025px) {
     background-attachment: fixed;
@@ -74,6 +78,11 @@
 
   .hero-content {
     z-index: 10;
+    animation: hero-slide-in 0.8s ease-out both;
+
+    @media (prefers-reduced-motion: reduce) {
+      animation: none;
+    }
 
     .hero-title {
       font-size: clamp(2.5rem, 5vw, 4rem);
@@ -220,5 +229,14 @@
         left: 5%;
       }
     }
+  }
+}
+
+@keyframes hero-slide-in {
+  from {
+    transform: translateX(-50px);
+  }
+  to {
+    transform: translateX(0);
   }
 }

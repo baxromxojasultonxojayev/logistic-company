@@ -12,12 +12,13 @@ export default function Hero() {
 
   return (
     <section className="hero-section">
+      {/* Hero background is the LCP element: start fetching it before CSS is parsed.
+          Media queries mirror the breakpoints in style.scss so only one file is downloaded. */}
+      <link rel="preload" as="image" type="image/webp" href="/new-image/hero-mobile.webp" media="(max-width: 828px)" fetchPriority="high" />
+      <link rel="preload" as="image" type="image/webp" href="/new-image/hero.webp" media="(min-width: 829px)" fetchPriority="high" />
       <div className="container hero-inner">
         <motion.div
           className="hero-content"
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
           style={{ opacity }}
         >
           <h1 className="hero-title">{t('hero_title')}</h1>
@@ -30,7 +31,7 @@ export default function Hero() {
 
       </div>
 
-      <div className="hero-scroll-indicator">
+      <div className="hero-scroll-indicator" aria-hidden="true">
         <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 1.5, repeat: Infinity }}

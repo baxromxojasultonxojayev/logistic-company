@@ -28,6 +28,17 @@
       span {
         color: var(--accent);
       }
+
+      .logo-img {
+        display: block;
+        height: 56px;
+        width: auto;
+      }
+
+      // The logo is a dark mark; flip it to white on dark backgrounds
+      [data-theme="dark"] & .logo-img {
+        filter: invert(1);
+      }
     }
 
     p {

@@ -84,7 +84,10 @@
         }
 
         img {
+          display: block;
           width: 100%;
+          // Keep the 16:9 ratio from the width/height attributes instead of the fixed 563px height
+          height: auto;
           object-fit: scale-down;
           transition: transform 0.4s ease-out;
         }

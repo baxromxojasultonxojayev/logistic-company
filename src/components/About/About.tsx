@@ -8,9 +8,9 @@ export default function About() {
   const t = useTranslations();
 
   const warehouses = [
-    { city: 'Guanchjou', image: '/images/aboutus/fura.jpg' },
-    { city: 'Ivu', image: '/images/aboutus/plane-train.jpg' },
-    { city: 'Lyanyungan', image: '/images/aboutus/container.jpg' },
+    { city: 'Guanchjou', image: '/new-image/truck-convoy.webp' },
+    { city: 'Ivu', image: '/images/aboutus/plane-train.webp' },
+    { city: 'Lyanyungan', image: '/new-image/port-container.webp' },
   ];
 
   return (
@@ -38,9 +38,13 @@ export default function About() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
             >
-
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={wh.image}
+                width={900}
+                height={506}
+                loading="lazy"
+                decoding="async"
                 alt={`${t('about_warehouse_label')} ${wh.city}`}
                 className="card-img"
               />

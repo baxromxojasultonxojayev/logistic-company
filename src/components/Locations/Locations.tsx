@@ -21,11 +21,12 @@ export default function Locations() {
         <div className="map-wrapper">
           <div className="map-container">
             <Image
-              src="/images/services/map.jpg"
+              src="/images/services/map.webp"
               alt="World Map"
               fill
+              sizes="(max-width: 1248px) 100vw, 1200px"
               className="world-map-img"
-              priority
+              loading="lazy"
             />
 
           </div>

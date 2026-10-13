@@ -35,6 +35,12 @@ async function apiRequest<TResponse, TBody = void>(
   }
 
   const finalLocale = activeLocale || "uz";
+
+  // Without this the request silently goes to "undefined/..." on the current origin and 404s
+  if (!BASE_URL) {
+    throw new Error("NEXT_PUBLIC_API_URL is not set — add it to .env.local (see .env.example)");
+  }
+
   const url = `${BASE_URL}${cleanEndpoint}`;
 
   const fetchOptions: RequestInit = {
@@ -67,9 +73,9 @@ async function apiRequest<TResponse, TBody = void>(
     const result = (await response.json()) as ApiResponse<TResponse>;
     return result.data;
   } catch (error) {
+    // Callers log and handle the failure; logging here too duplicated every error
     const errorMessage =
       error instanceof Error ? error.message : "Unknown API error";
-    console.error("API Request failed:", errorMessage);
     throw new Error(errorMessage);
   }
 }

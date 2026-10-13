@@ -121,8 +121,10 @@ export default function Feedback() {
             onSubmit={handleSubmit}
           >
             <div className="input-group">
-              <label>{t('feedback_name')}</label>
+              <label htmlFor="feedback-name">{t('feedback_name')}</label>
               <input
+                id="feedback-name"
+                name="name"
                 type="text"
                 placeholder={t('feedback_name_placeholder')}
                 value={name}
@@ -131,8 +133,10 @@ export default function Feedback() {
               />
             </div>
             <div className="input-group">
-              <label>{t('feedback_phone')}</label>
+              <label htmlFor="feedback-phone">{t('feedback_phone')}</label>
               <input
+                id="feedback-phone"
+                name="phone"
                 type="tel"
                 placeholder="+998 (90) 123-45-67"
                 value={phone}
@@ -151,8 +155,10 @@ export default function Feedback() {
             </div>
 
             <div className="input-group">
-              <label>{t('feedback_message')}</label>
+              <label htmlFor="feedback-message">{t('feedback_message')}</label>
               <textarea
+                id="feedback-message"
+                name="message"
                 placeholder={t('feedback_message_placeholder')}
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}

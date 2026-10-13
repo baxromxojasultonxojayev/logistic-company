@@ -38,7 +38,7 @@ export async function generateMetadata(): Promise<Metadata> {
       type: 'website',
       images: [
         {
-          url: '/images/og-image.jpg',
+          url: '/new-image/og-image.jpg',
           width: 1200,
           height: 630,
           alt: 'BSM Group - Xalqaro yuk tashish va Kargo',
@@ -49,7 +49,7 @@ export async function generateMetadata(): Promise<Metadata> {
       card: 'summary_large_image',
       title: t('meta_title'),
       description: t('meta_description'),
-      images: ['/images/og-image.jpg'],
+      images: ['/new-image/og-image.jpg'],
     },
     robots: {
       index: true,
@@ -105,7 +105,7 @@ export default async function RootLayout({
       "bsm logistic"
     ],
     "url": "https://bsm-group.uz",
-    "logo": "https://bsm-group.uz/icon-512.png",
+    "logo": "https://bsm-group.uz/new-image/bsm-logo.png",
     "description": "BSM Group - 2016-yildan buyon xalqaro logistika, yuk tashish, Xitoydan kargo, bojxona rasmiylashtiruvi va ombor xizmatlarini ko'rsatuvchi ishonchli hamkor.",
     "foundingDate": "2016",
     "address": {
@@ -152,7 +152,7 @@ export default async function RootLayout({
       "bsmlogistics"
     ],
     "description": "BSM Group - xalqaro logistika, Xitoydan kargo, yuk tashish, bojxona rasmiylashtiruvi va ombor xizmatlari",
-    "image": "https://bsm-group.uz/images/aboutus/fura.jpg",
+    "image": "https://bsm-group.uz/new-image/truck-convoy.webp",
     "@id": "https://bsm-group.uz",
     "url": "https://bsm-group.uz",
     "telephone": "+998555200202",

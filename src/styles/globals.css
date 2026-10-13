@@ -17,7 +17,7 @@
 
   /* Text */
   --text-main: var(--brand-navy);
-  --text-muted: var(--brand-grey);
+  --text-muted: #6b6b6b; /* brand-grey darkened to pass WCAG AA (4.5:1) on white */
   --text-on-brand: #FFFFFF;
 
   /* UI Elements */
